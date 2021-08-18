@@ -1,0 +1,8 @@
+Schnittblume 5
+Topf 23
+Schnittblume 15
+Dekoration 10
+Erde 50
+Schnittblume 11
+Erde 60
+Schnittblume 17
