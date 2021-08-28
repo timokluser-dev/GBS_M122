@@ -249,11 +249,55 @@ for file in /home/vmadmin/Desktop/M122; do
 done
 ```
 
+## Functions
+
+```bash
+function hello_world {
+  echo "hello world"
+}
+
+globalVar="change me"
+
+hello_user () {
+  # param: $1 - firstname
+  # param: $2 - lastname
+  local localVar=10
+  globalVar="changed"
+
+  echo "hello $1 $2"
+
+  return 0 # only numeric - else use global vars
+}
+
+# call function -> without `()`
+hello_world
+hello_user "john" "doe"
+# access return value
+echo $?
+```
+
+Access to parameters is the same as for whole scripts.  
+:arrow_right: [Parameters](#parameters)
+
 ## Regex
 
 > Reference: `122 DossierL.pdf` - Page 59
 
 ```bash
+# grep '<regex expression>' <file>
 grep '1$' mrolympia.dat
 ```
 
+## Create New Script
+
+```bash
+#!/usr/bin/env bash
+
+echo "hello world"
+```
+
+First line is called **Shebang**.  
+There are two options of defining:
+
+- `#!/bin/bash` direct path to interpreter
+- `#!/usr/bin/env bash` get the path to interpreter from env
