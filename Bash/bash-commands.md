@@ -1,9 +1,5 @@
 # Bash Commands
 
-## TOC
-
-TOC here
-
 ## Help
 
 ```bash
@@ -44,6 +40,15 @@ ls -la
 list all files and folders - also hidden (a)
 
 ---
+
+```
+-rwxrwx--x  1 vmadmin vmadmin  460 Aug  5  2018 verzweigung7.sh
+```
+rwxrwx--x = 
+
+| rwx  | rwx   | --x    |
+| ---- | ----- | ------ |
+| User | Group | Others |
 
 ```bash
 chmod 777 file.txt
@@ -222,6 +227,26 @@ case $COUNTRY in
     echo -n "unknown"
     ;;
 esac
+```
+
+## while
+
+```bash
+exit=0
+
+while [ $exit -ne 1 ]
+do
+
+  i=0
+  while [ $i -lt 10 ]
+  do
+    echo "."
+    sleep 1
+    ((i++))
+  done
+  
+  $exit=1
+done
 ```
 
 ## for
