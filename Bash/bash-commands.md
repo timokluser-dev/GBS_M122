@@ -116,12 +116,6 @@ which ifconfig # out: /usr/sbin/ifconfig
 ```
 Show path of executable
 
-<!-- ---
-
-```bash
-```
-command description -->
-
 ## Vars
 
 ```bash
@@ -176,18 +170,37 @@ Change permission for every file in /home/vmadmin with filetype `.txt`
 ## Read input
 
 ```bash
-read USER_INPUT # limit number of chars using `-N <int: chars>`
+read -p "Enter smth: " # limit number of chars using `-N <int: chars>`
 echo $USER_INPUT
 ```
 
 ## if
 
 ```bash
-if [ $1 -eq 'hello' ] # see Comparer below
+if [[ $1 -eq 'hello'  &&  $1 =~ ^[Hh].*[^\.]$ ]] # see Comparer below
 then
-    echo 'welt'
+    echo 'world'
 else
-    echo 'hh'
+    echo 'else'
+fi
+
+# using function and return code
+function my_func {
+    true
+    # false
+}
+function my_func_false {
+    false
+}
+
+if $(my_func) && [[ 12 =~ [0-9]+ ]] # func and regex combined
+then
+    echo "true"
+fi
+
+if ! $(my_func_false)
+then
+    echo "false"
 fi
 ```
 
@@ -198,6 +211,7 @@ fi
 | `-z <STRING>`               | The lengh of STRING is zero (ie it is empty).                         |
 | `<STRING1> = <STRING2>`     | STRING1 is equal to STRING2                                           |
 | `<STRING1> != <STRING2>`    | STRING1 is not equal to STRING2                                       |
+| `<STRING> =~ <EXPRESSION>`  | STRING matches expression `=> expression without quotes`              |
 | `<INTEGER1> -eq <INTEGER2>` | INTEGER1 is numerically equal to INTEGER2                             |
 | `<INTEGER1> -gt <INTEGER2>` | INTEGER1 is numerically greater than INTEGER2                         |
 | `<INTEGER1> -lt <INTEGER2>` | INTEGER1 is numerically less than INTEGER2                            |
@@ -274,7 +288,7 @@ for file in /home/vmadmin/Desktop/M122; do
 done
 ```
 
-## Functions
+## functions
 
 ```bash
 function hello_world {
@@ -304,6 +318,53 @@ echo $?
 Access to parameters is the same as for whole scripts.  
 :arrow_right: [Parameters](#parameters)
 
+## Command Master Table
+
+| Command     | Purpose                                                         |
+| ----------- | --------------------------------------------------------------- |
+| `basename ` | strip directory and suffix from filenames                       |
+| `cat      ` | concatenate files and print on the standard output              |
+| `cd       ` | change directory                                                |
+| `chgrp    ` | change file group ownership                                     |
+| `chmod    ` | change file permissions                                         |
+| `chown    ` | change file owner and group                                     |
+| `cp       ` | copy files and directories                                      |
+| `cut      ` | remove sections from each line of files                         |
+| `date     ` | print or set the system date and time                           |
+| `dc       ` | an arbitrary precision calculator                               |
+| `echo     ` | display a line of text                                          |
+| `exit     ` | terminate script and return exit-code                           |
+| `find     ` | search for files in a directory hierarchy                       |
+| `gedit    ` | text editor for the GNOME Desktop                               |
+| `grep     ` | print lines that match patterns                                 |
+| `head     ` | output the first part of files                                  |
+| `ifconfig ` | configure a network interface                                   |
+| `kill     ` | send a signal to a process                                      |
+| `ls       ` | list directory contents                                         |
+| `man      ` | an interface to the system reference manuals                    |
+| `mkdir    ` | make directories                                                |
+| `mv       ` | move (rename) files                                             |
+| `nano     ` | Nano's ANOther editor, inspired by Pico                         |
+| `nautilus ` | a file manager for GNOME                                        |
+| `ps       ` | report a snapshot of the current processes.                     |
+| `pwd      ` | print name of current/working directory                         |
+| `read     ` | get user input                                                  |
+| `rmdir    ` | remove empty directories                                        |
+| `rm       ` | remove files or directories                                     |
+| `sort     ` | sort lines of text files                                        |
+| `sudo     ` | execute a command as another user                               |
+| `tail     ` | output the last part of files                                   |
+| `tee      ` | read from standard input and write to standard output and files |
+| `top      ` | display Linux processes                                         |
+| `touch    ` | create file without content                                     |
+| `tr       ` | translate or delete characters                                  |
+| `wc       ` | print word count for file                                       |
+| `which    ` | locate a command                                                |
+| `whoami   ` | print effective userid                                          |
+| `who      ` | show who is logged on                                           |
+
+Source: `man`
+
 ## Regex
 
 > Reference: `122 DossierL.pdf` - Page 59
@@ -317,6 +378,13 @@ grep '1$' mrolympia.dat
 
 ```bash
 #!/usr/bin/env bash
+
+# Programm: HalloWelt.sh
+# Version: 1.0
+# Autor: TKluser
+# Datum: 08.09.2021
+# Lizenz: MIT
+# Beschreibung: <TODO>
 
 echo "hello world"
 ```
