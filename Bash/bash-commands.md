@@ -187,7 +187,6 @@ fi
 # using function and return code
 function my_func {
     true
-    # false
 }
 function my_func_false {
     false
