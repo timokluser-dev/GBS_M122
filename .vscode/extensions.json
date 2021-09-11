@@ -2,6 +2,7 @@
     "recommendations": [
         "mushan.vscode-paste-image",
         "yzhang.markdown-all-in-one",
-        "ms-vscode.powershell"
+        "ms-vscode.powershell",
+        "foxundermoon.shell-format"
     ]
 }
