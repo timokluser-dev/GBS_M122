@@ -40,7 +40,7 @@ function is_str {
 
 function file_exists {
     # file
-    if [ -f "$1" ] && [ -n "$1" ]; then
+    if [[ -f "$1" && -n "$1" ]]; then
         true
     else
         false
@@ -49,7 +49,7 @@ function file_exists {
 
 function folder_exists {
     # folder
-    if [ -d "$1" ] && [ -n "$1" ]; then
+    if [[ -d "$1" && -n "$1" ]]; then
         true
     else
         false
@@ -72,17 +72,17 @@ function file_contains {
 
 function folder_empty {
     # folder
-    if [ -n "$(ls -A $1 2>/dev/null)" ]; then
-        false
-    else
+    if [[ -z "$(ls $1 2>/dev/null)" ]]; then
         true
+    else
+        false
     fi
 }
 
 function folder_contains {
     # folder
     # filename / expression
-    ls -la $1 | grep -e $2 &>/dev/null
+    find $1 -printf "%f\n" | grep -e $2 &>/dev/null
     return $?
 }
 
@@ -134,7 +134,7 @@ function print_usage {
 #endregion Functions
 
 PARAMS=("dir1" "dir2")
-if [ $# -ne ${#PARAMS[@]} ]; then
+if [[ $# -ne ${#PARAMS[@]} ]]; then
     # echo "error: not all paramters specified"
     # print_usage
     # script_error
@@ -156,21 +156,23 @@ else
 fi
 
 # Parameter validation
-if ! folder_exists $dir1 || ! folder_exists $dir2; then
+if ! $(folder_exists $dir1) || ! $(folder_exists $dir2); then
     echo "error: parameter validation failed"
     print_usage
     script_error
 fi
 
-if folder_contains _test/ "log.log"; then
+if $(folder_contains _test/ "log.log"); then
     echo "folder contains"
 fi
 
-if file_contains hallo.txt ".*ha.*"; then
+if $(file_contains hallo.txt ".*ha.*"); then
     echo "file contains"
 fi
 
-# --> CODE HERE <--
+# ###################
+# ---> CODE HERE <---
+# ###################
 
 # Script End
 read -p "Press any key to continue ..." -n 1 -t 10
