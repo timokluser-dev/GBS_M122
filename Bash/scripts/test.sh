@@ -9,7 +9,7 @@
 #region Functions
 
 function is_num {
-    # string
+    # string - string to test
     REGEX='^[0-9]+$'
     if [[ $1 =~ $REGEX ]]; then
         true
@@ -19,7 +19,7 @@ function is_num {
 }
 
 function is_decimal {
-    # string
+    # string - string to test
     REGEX='^[0-9]+(\.[0-9]+$|$)'
     if [[ $1 =~ $REGEX ]]; then
         true
@@ -29,7 +29,7 @@ function is_decimal {
 }
 
 function is_str {
-    # string
+    # string - string to test
     REGEX='[A-Za-z0-9_]+'
     if [[ $1 =~ $REGEX ]]; then
         true
@@ -57,21 +57,21 @@ function folder_exists {
 }
 
 function files_are_equal {
-    # file
-    # file
+    # file - file 1
+    # file - file 2
     diff $1 $2 &>/dev/null
     return $?
 }
 
 function file_contains {
     # file
-    # expression
+    # expression - regex expression
     grep -e $2 $1 &>/dev/null
     return $?
 }
 
 function folder_empty {
-    # folder
+    # folder - foldername
     if [[ -z "$(ls $1 2>/dev/null)" ]]; then
         true
     else
@@ -81,26 +81,27 @@ function folder_empty {
 
 function folder_contains {
     # folder
-    # filename / expression
+    # expression - or filename
     find $1 -printf "%f\n" | grep -e $2 &>/dev/null
     return $?
 }
 
 function kill_process {
-    # string
-    kill $(ps -Alf | grep $1 | tr -s [:blank:] '\t' | head -n1 | cut -f4)
+    # string - process name
+    kill $(ps -Alf | grep "$1" | tr -s [:blank:] '\t' | head -n1 | cut -f4) &>/dev/null
+    return $?
 }
 
 function get_file_line {
     # file
-    # line
+    # line - line number
     sed "$2q;d" $1
 }
 
 USER_INPUT=""
 function get_input {
-    # string
-    echo -n "$1 "
+    # string - prompt to show
+    echo -n "$1: "
     read
     USER_INPUT=$REPLY
 }
@@ -115,8 +116,47 @@ function read_confirmation {
     fi
 }
 
+function set_var {
+    # string - var name
+    # string - var value
+    printf -v "$1" "%s" "$2"
+}
+
 function get_filename {
+    # string - full file path
     basename $1
+}
+
+function validate_param {
+    # string - var name
+    # string - var value
+    if [[ $1 =~ _dir$ ]]; then
+        folder_exists $2
+        return $?
+    elif [[ $1 =~ _file$ ]]; then
+        file_exists $2
+        return $?
+    elif [[ $1 =~ _num$ || $1 =~ _int$ ]]; then
+        is_num $2
+        return $?
+    elif [[ $1 =~ _decimal$ || $1 =~ _dec$ ]]; then
+        is_dec $2
+        return $?
+    elif [[ $1 =~ _string$ || $1 =~ _str$ ]]; then
+        is_str $2
+        return $?
+    fi
+}
+
+function validate_params {
+    for i in ${!PARAMS[@]}; do
+        param=${PARAMS[$i]}
+        value=${!param}
+        if ! $(validate_param $param $value); then
+            print_usage
+            script_error
+        fi
+    done
 }
 
 function script_error {
@@ -128,39 +168,46 @@ function script_success {
 }
 
 function print_usage {
-    echo "usage: $0 dir1 dir2" # string / num / decimal / dir / file
+    echo "usage: $0 ${PARAMS[*]}" # string / num / decimal / dir / file
 }
 
 #endregion Functions
 
-PARAMS=("dir1" "dir2")
+PARAMS=("folder1_dir" "folder2_dir")
+INTERACTIVE=true
 if [[ $# -ne ${#PARAMS[@]} ]]; then
-    # echo "error: not all paramters specified"
-    # print_usage
-    # script_error
-    # ---
-    # for every param ask for user input
-    for i in ${!PARAMS[@]}; do
-        PARAM_NAME="${PARAMS[$i]}"
-        get_input ${PARAMS[$i]}
-        printf -v "$PARAM_NAME" "%s" "$USER_INPUT"
-    done
+    if [[ "$INTERACTIVE" = "true" ]]; then
+        # for every param ask for user input
+        for i in ${!PARAMS[@]}; do
+            PARAM_NAME="${PARAMS[$i]}"
+            get_input ${PARAMS[$i]}
+            set_var $PARAM_NAME $USER_INPUT
+        done
+    else
+        echo "error: not all paramters specified"
+        print_usage
+        script_error
+    fi
 else
     # set all params to corresponding param variable
     for i in ${!PARAMS[@]}; do
         PARAM_NAME="${PARAMS[$i]}"
         index=$((i + 1))
         VALUE=${!index}
-        printf -v "$PARAM_NAME" "%s" "$VALUE"
+        set_var $PARAM_NAME $VALUE
     done
 fi
 
-# Parameter validation
-if ! $(folder_exists $dir1) || ! $(folder_exists $dir2); then
-    echo "error: parameter validation failed"
-    print_usage
+# Parameter validation based on type
+validate_params
+
+# Further Parameter validation
+if $(folder_empty $folder2_dir); then
+    echo "error: folder2_dir cannot be empty"
     script_error
 fi
+
+#region Main Code
 
 if $(folder_contains _test/ "log.log"); then
     echo "folder contains"
@@ -170,9 +217,7 @@ if $(file_contains hallo.txt ".*ha.*"); then
     echo "file contains"
 fi
 
-# ###################
-# ---> CODE HERE <---
-# ###################
+#endregion Main Code
 
 # Script End
 read -p "Press any key to continue ..." -n 1 -t 10
