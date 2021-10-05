@@ -1,0 +1,25 @@
+{
+  "name": "gbs_m122",
+  "version": "1.0.0",
+  "description": "GBS_M122",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bash:docs": "npx gitdown ./Bash/bash-commands.md --output-file ./Bash/bash-commands_dist.md",
+    "powershell:docs": "npx gitdown ./PowerShell/powershell-scripting.md --output-file ./PowerShell/powershell-scripting_dist.md",
+    "docs": "npm run bash:docs && npm run powershell:docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timokluser-dev/GBS_M122.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timokluser-dev/GBS_M122/issues"
+  },
+  "homepage": "https://github.com/timokluser-dev/GBS_M122#readme",
+  "devDependencies": {
+    "gitdown": "^3.1.4"
+  }
+}

@@ -1,7 +1,27 @@
+<a name="bash-commands"></a>
 # Bash Commands
 
-{"gitdown": "contents"}
+* [Bash Commands](#bash-commands)
+    * [Help](#bash-commands-help)
+    * [Basics](#bash-commands-basics)
+    * [Vars](#bash-commands-vars)
+    * [Parameters](#bash-commands-parameters)
+    * [Pipe |](#bash-commands-pipe)
+    * [Pre exec $()](#bash-commands-pre-exec)
+    * [Write to file](#bash-commands-write-to-file)
+    * [Read input](#bash-commands-read-input)
+    * [if](#bash-commands-if)
+    * [switch case](#bash-commands-switch-case)
+    * [while](#bash-commands-while)
+    * [for](#bash-commands-for)
+    * [functions](#bash-commands-functions)
+    * [Command Master Table](#bash-commands-command-master-table)
+    * [Regex](#bash-commands-regex)
+    * [Create New Script](#bash-commands-create-new-script)
+    * [Summary & Appendix](#bash-commands-summary-appendix)
 
+
+<a name="bash-commands-help"></a>
 ## Help
 
 ```bash
@@ -20,6 +40,7 @@ type: `/<search term>` to search
 => type: `n` go to next match  
 => type: `N` go to prev match  
 
+<a name="bash-commands-basics"></a>
 ## Basics
 
 ```bash
@@ -118,6 +139,7 @@ which ifconfig # out: /usr/sbin/ifconfig
 ```
 Show path of executable
 
+<a name="bash-commands-vars"></a>
 ## Vars
 
 ```bash
@@ -128,6 +150,7 @@ echo $HELLO
 - `$PATH` _Locations containing executables_
 - `$?`  _Exit status of last command / script_
 
+<a name="bash-commands-parameters"></a>
 ## Parameters
 
 ```bash
@@ -140,6 +163,7 @@ echo $HELLO
 - ...
 - `$#` = `2` - number of arguments
 
+<a name="bash-commands-pipe"></a>
 ## Pipe |
 
 ![](files/pipe.png)
@@ -149,6 +173,7 @@ cat outputblumen.txt | more -1
 ```
 Get content of file and pass to more to show only 1 line
 
+<a name="bash-commands-pre-exec"></a>
 ## Pre exec $()
 
 ```bash
@@ -156,6 +181,7 @@ chmod 777 $(find /home/vmadmin/ -name *.txt)
 ```
 Change permission for every file in /home/vmadmin with filetype `.txt`
 
+<a name="bash-commands-write-to-file"></a>
 ## Write to file
 
 ```bash
@@ -169,6 +195,7 @@ Change permission for every file in /home/vmadmin with filetype `.txt`
 <command> >stdout.txt 2>stderr.txt  # stdout & stderr - separate file
 ```
 
+<a name="bash-commands-read-input"></a>
 ## Read input
 
 ```bash
@@ -176,6 +203,7 @@ read -p "Enter smth: " # limit number of chars using `-N <int: chars>`
 echo $USER_INPUT
 ```
 
+<a name="bash-commands-if"></a>
 ## if
 
 ```bash
@@ -226,6 +254,7 @@ fi
 | `-w <FILE>`                 | FILE exists and the write permission is granted.                      |
 | `-x <FILE>`                 | FILE exists and the execute permission is granted.                    |
 
+<a name="bash-commands-switch-case"></a>
 ## switch case
 
 ```bash
@@ -247,6 +276,7 @@ case $COUNTRY in
 esac
 ```
 
+<a name="bash-commands-while"></a>
 ## while
 
 ```bash
@@ -267,6 +297,7 @@ do
 done
 ```
 
+<a name="bash-commands-for"></a>
 ## for
 
 ```bash
@@ -292,6 +323,7 @@ for file in /home/vmadmin/Desktop/M122; do
 done
 ```
 
+<a name="bash-commands-functions"></a>
 ## functions
 
 ```bash
@@ -493,6 +525,7 @@ function print_usage {
 #endregion Functions
 ```
 
+<a name="bash-commands-command-master-table"></a>
 ## Command Master Table
 
 | Command     | Purpose                                                         |
@@ -540,6 +573,7 @@ function print_usage {
 
 Source: `man`
 
+<a name="bash-commands-regex"></a>
 ## Regex
 
 > Reference: `122 DossierL.pdf` - Page 59
@@ -549,6 +583,7 @@ Source: `man`
 grep '1$' mrolympia.dat
 ```
 
+<a name="bash-commands-create-new-script"></a>
 ## Create New Script
 
 ```bash
@@ -570,7 +605,8 @@ There are two options of defining:
 - `#!/bin/bash` direct path to interpreter
 - `#!/usr/bin/env bash` get the path to interpreter from env
 
-## Summary & Appendix
+<a name="bash-commands-summary-appendix"></a>
+## Summary &amp; Appendix
 
 - [01](#create-new-script)
 - [02](#functions)
