@@ -32,6 +32,27 @@ Get-Command -Verb Set
 Get-Command -Module Azure.Storage
 ```
 
+## Directory Navigation
+
+`$PSScriptRoot` - the folder containing the PowerShell script
+
+- `Get-Location`
+- `Set-Location`
+
+## Environment Variables
+
+```powershell
+# system env
+Write-Host $env:PATH
+
+# setting for process
+$env:Z_TEST = $true
+Write-Host $env:Z_TEST
+
+# get all
+Get-Item -Path "env:\"
+```
+
 ## Syntax
 
 ```
@@ -166,23 +187,158 @@ TwoLetterISOLanguageName       Property   string TwoLetterISOLanguageName {get;}
 UseUserOverride                Property   bool UseUserOverride {get;}
 ```
 
-## Object Mgmt
-
-- `Group-Object`
-- `Measure-Object`
-- `Select-Object`
-- `Sort-Object`
-- `Tee-Object`
-- `Where-Object`
-
 ## Organize Output
 
 - `Out-File`
-- `Out-GridView`
-- `Out-Host`
-- `Out-Null`
+- `Out-GridView` - Window with GridView
+- `Out-Host` - std output
+- `Out-Null` = /dev/null
 - `Out-Printer`
 - `Out-String`
+
+## Working with Objects
+
+```powershell
+# (object).Attribute
+(Get-Service | Measure-Object).Count
+```
+
+### Object Mgmt
+
+> `<Cmdlet> -Property`
+
+- `Group-Object`
+- `Measure-Object` - .Count, .Average, .Sum ...
+- `Select-Object`
+- `Sort-Object`
+- `Tee-Object` [-FilePath] [-Variable]
+- `Where-Object` [-Property] [-Value]
+
+### Export of Objects
+
+> Cmdlets: `ConvertTo-`*
+
+- `ConvertTo-Csv`
+- `ConvertTo-Json`
+- `ConvertTo-Xml` [-As String]
+
+Addition: `ConvertTo-Html` [-As Table]
+
+### Parsing of Objects
+
+> Cmdlets: `ConvertFrom-`*
+
+- `ConvertFrom-Csv`
+- `ConvertFrom-Json`
+
+## SecureString - Credential Mgmt
+
+SecretStrings in PS can be used to store user passwords or so.  
+**Attention: SecretString can be decrypted and is not one-way hashing**
+
+### Create SecureString
+
+> :heavy_exclamation_mark: when using `-AsPlainText` always append `-Force`
+
+```powershell
+$SecretOne = ConvertTo-SecureString -String "super secret" -AsPlainText -Force
+
+$SecretTwo = Read-Host -AsSecureString
+```
+
+### PSCredentials
+
+> :heavy_exclamation_mark: Do not store passwords in a script - use env variables
+
+```powershell
+$User = "Domain01\User01" # $env:DAEMON_USER
+$Password = ConvertTo-SecureString -String "P@sSwOrd" -AsPlainText -Force
+$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $Password
+```
+
+## Pipeline
+
+### Best Practice
+
+- Always so as much as possible using the Cmdlets
+  - :thumbsdown: `Get-Process -Name explorer | Stop-Process`
+  - **instead:** `Stop-Process -Name explorer`
+- If possible store the return value of the Cmdlet and reuse it in another code-line
+  - makes it more maintainable & testable
+
+## PSProviders
+
+:arrow_right: `Get-PSProvider`
+
+Use the `Drives` as prefix in `-Path` parameters (e.g. `Env:PATH`)
+
+```powershell
+Get-Item -Path "c:\temp\file.txt"
+Get-Item -Path "Env:PATH"
+# ... - Get-Command -Noun Item
+```
+
+## PSDrives
+
+Get all available physical & virtual filesystems:
+
+```powershell
+Get-PSDrives
+```
+
+All drive's name are also valid PSProviders
+
+@see: `New-PSDrive`, `Remove-PSDrive`
+
+## Items (PSProvider: all)
+
+for read protected items: `-Force`
+
+- `Get-Item`
+- `Get-ChildItem` [-Recurse]
+- `Get-ItemProperty`
+- `Set-Item`
+- `Set-ItemProperty`
+- `Clear-Item` delete item's content
+- `Clear-ItemProperty`
+- `Copy-Item`
+- `Copy-ItemProperty`
+- `Invoke-Item` open file with associated default app
+- `Move-Item`
+- `Move-ItemProperty`
+- `New-Item` [-ItemType]
+- `New-ItemProperty`
+- `Remove-Item`
+- `Remove-ItemProperty`
+- `Rename-Item`
+- `Rename-ItemProperty`
+
+
+## Files (PSProvider: `FileSystem`)
+
+- `Add-Content`
+- `Clear-Content`
+- `Get-Content`
+- `Set-Content`
+
+## Aliases
+
+> :information_source: PowerShell does not support parameters in aliases
+
+Key-Concept:
+
+- `gal` --> `Get-Alias`
+- only for process specified
+  - else `Import-Alias` / `Export-Alias`
+
+Commands:
+
+- `Get-Alias`
+- `Set-Alias`
+- `New-Alias` will throw exception if alias already exists
+- `Export-Alias`
+- `Import-Alias`
+- `Remove-Item -Path Alias:\gal -Force` to delete an alias
 
 ## Command Master Table
 
@@ -193,6 +349,7 @@ UseUserOverride                Property   bool UseUserOverride {get;}
 | `Get-Module`         | show local PS modules      |
 | `Test-Connection`    | ping a computer            |
 | `Test-NetConnection` | ping using a specific port |
+| `Invoke-Item`        | open file with default app |
 |                      |                            |
 
 # Script Template
