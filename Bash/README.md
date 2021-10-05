@@ -1,3 +1,3 @@
 # Bash
 
-:arrow_right: [Bash Commands](bash-commands.md)
+:arrow_right: [Bash Commands](bash-commands_dist.md)

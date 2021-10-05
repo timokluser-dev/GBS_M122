@@ -1,4 +1,4 @@
 # PowerShell
 
-- [PowerShell Docs](powershell-scripting.md)
+- [PowerShell Docs](powershell-scripting_dist.md)
 - [Links](links.md)
