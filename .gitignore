@@ -214,3 +214,6 @@ dist
 ### Node Patch ###
 # Serverless Webpack directories
 .webpack/
+
+### Project Specific ###
+*.pdf
