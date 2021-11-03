@@ -6,7 +6,7 @@
         * [`about_` pages](#powershell-commands-command-help-about_-pages)
     * [Find Commands](#powershell-commands-find-commands)
     * [Directory Navigation](#powershell-commands-directory-navigation)
-    * [Environment Variables](#powershell-commands-environment-variables)
+    * [Environment Variables - $env](#powershell-commands-environment-variables-env)
     * [Syntax](#powershell-commands-syntax)
         * [Named Parameter](#powershell-commands-syntax-named-parameter)
         * [Switch Parameter](#powershell-commands-syntax-switch-parameter)
@@ -14,23 +14,36 @@
         * [Common Parameters](#powershell-commands-syntax-common-parameters)
         * [`-WhatIf`](#powershell-commands-syntax-whatif)
         * [`-Confirm`](#powershell-commands-syntax-confirm)
-    * [List Command Attributes](#powershell-commands-list-command-attributes)
     * [Organize Output](#powershell-commands-organize-output)
+    * [Logical Operators](#powershell-commands-logical-operators)
+    * [Comparison Operators](#powershell-commands-comparison-operators)
     * [Working with Objects](#powershell-commands-working-with-objects)
         * [Object Mgmt](#powershell-commands-working-with-objects-object-mgmt)
+        * [List Object Attributes](#powershell-commands-working-with-objects-list-object-attributes)
+        * [Inspect Objects](#powershell-commands-working-with-objects-inspect-objects)
+        * [Create Objects](#powershell-commands-working-with-objects-create-objects)
         * [Export of Objects](#powershell-commands-working-with-objects-export-of-objects)
         * [Parsing of Objects](#powershell-commands-working-with-objects-parsing-of-objects)
+    * [Enum](#powershell-commands-enum)
+    * [Regex](#powershell-commands-regex)
+    * [Array](#powershell-commands-array)
     * [SecureString - Credential Mgmt](#powershell-commands-securestring-credential-mgmt)
         * [Create SecureString](#powershell-commands-securestring-credential-mgmt-create-securestring)
         * [PSCredentials](#powershell-commands-securestring-credential-mgmt-pscredentials)
     * [Pipeline](#powershell-commands-pipeline)
         * [Best Practice](#powershell-commands-pipeline-best-practice)
+        * [Foreach Pipe](#powershell-commands-pipeline-foreach-pipe)
     * [PSProviders](#powershell-commands-psproviders)
     * [PSDrives](#powershell-commands-psdrives)
     * [Items (PSProvider: all)](#powershell-commands-items-psprovider-all)
     * [Files (PSProvider: `FileSystem`)](#powershell-commands-files-psprovider-filesystem)
+        * [Where File-Size](#powershell-commands-files-psprovider-filesystem-where-file-size)
+        * [Line, Word, Char count](#powershell-commands-files-psprovider-filesystem-line-word-char-count)
     * [Aliases](#powershell-commands-aliases)
+        * [Find corresponding PS Cmdlet](#powershell-commands-aliases-find-corresponding-ps-cmdlet)
     * [Command Master Table](#powershell-commands-command-master-table)
+* [Writing PS OneLiners](#writing-ps-oneliners)
+    * [Tipps & Tricks](#writing-ps-oneliners-tipps-tricks)
 * [Script Template](#script-template)
 
 
@@ -75,8 +88,8 @@ Get-Command -Module Azure.Storage
 - `Get-Location`
 - `Set-Location`
 
-<a name="powershell-commands-environment-variables"></a>
-## Environment Variables
+<a name="powershell-commands-environment-variables-env"></a>
+## Environment Variables - $env
 
 ```powershell
 # system env
@@ -188,11 +201,112 @@ What if: Performing the operation "Create File" on target "Destination: C:\Users
 Remove-Item .\folder\ -Recurse -Confirm:$false
 ```
 
-<a name="powershell-commands-list-command-attributes"></a>
-## List Command Attributes
+<a name="powershell-commands-organize-output"></a>
+## Organize Output
+
+- `Out-File`
+- `Out-GridView` - Window with GridView
+- `Out-Host` - std output
+- `Out-Null` = /dev/null
+- `Out-Printer`
+- `Out-String`
+
+<a name="powershell-commands-logical-operators"></a>
+## Logical Operators
+
+PowerShell supports the following logical operators.
+
+|Operator|Description                        |Example                   |
+|--------|-----------------------------------|--------------------------|
+|`-and`  |Logical AND. TRUE when both        |`(1 -eq 1) -and (1 -eq 2)`|
+|        |statements are TRUE.               |`False`                   |
+|`-or`   |Logical OR. TRUE when either       |`(1 -eq 1) -or (1 -eq 2)` |
+|        |statement is TRUE.                 |`True`                    |
+|`-xor`  |Logical EXCLUSIVE OR. TRUE when    |`(1 -eq 1) -xor (2 -eq 2)`|
+|        |only one statement is TRUE         |`False`                   |
+|`-not`  |Logical not. Negates the statement |`-not (1 -eq 1)`          |
+|        |that follows.                      |`False`                   |
+|`!`     |Same as `-not`                     |`!(1 -eq 1)`              |
+|        |                                   |`False`                   |
+
+Source: https://github.com/MicrosoftDocs/PowerShell-Docs/blob/staging/reference/7.1/Microsoft.PowerShell.Core/About/about_Logical_Operators.md?plain=1#L28
+
+<a name="powershell-commands-comparison-operators"></a>
+## Comparison Operators
+
+Comparison operators let you compare values or finding values that match
+specified patterns. PowerShell includes the following comparison operators:
+
+|    Type     |   Operator     |              Comparison test              |
+| ----------- | ------------   | ----------------------------------------- |
+| Equality    | `-eq`          | equals                                    |
+|             | `-ne`          | not equals                                |
+|             | `-gt`          | greater than                              |
+|             | `-ge`          | greater than or equal                     |
+|             | `-lt`          | less than                                 |
+|             | `-le`          | less than or equal                        |
+| Matching    | `-like`        | string matches wildcard pattern           |
+|             | `-notlike`     | string does not match wildcard pattern    |
+|             | `-match`       | string matches regex pattern              |
+|             | `-notmatch`    | string does not match regex pattern       |
+| Replacement | `-replace`     | replaces strings matching a regex pattern |
+| Containment | `-contains`    | collection contains a value               |
+|             | `-notcontains` | collection does not contain a value       |
+|             | `-in`          | value is in a collection                  |
+|             | `-notin`       | value is not in a collection              |
+| Type        | `-is`          | both objects are the same type            |
+|             | `-isnot`       | the objects are not the same type         |
+
+Source: https://github.com/MicrosoftDocs/PowerShell-Docs/blob/staging/reference/7.1/Microsoft.PowerShell.Core/About/about_Comparison_Operators.md?plain=1#L18
+
+<a name="powershell-commands-working-with-objects"></a>
+## Working with Objects
+
+null in PowerShell: `$null`
 
 ```powershell
-$(Get-WinSystemLocale)[0] | Get-Member
+# (object).Attribute
+(Get-Service | Measure-Object).Count
+```
+
+<a name="powershell-commands-working-with-objects-object-mgmt"></a>
+### Object Mgmt
+
+> `<Cmdlet> -Property`
+
+- `Group-Object`
+- `Measure-Object` - .Count, .Average, .Sum ...
+- `Select-Object`
+- `Sort-Object`
+- `Tee-Object` [-FilePath] [-Variable]
+- `Where-Object` [-Property] [-Value]
+
+<a name="powershell-commands-working-with-objects-object-mgmt-where-object-multi-conditions"></a>
+#### Where-Object - Multi Conditions
+
+```powershell
+# $_ = current item
+# -> Never use $_ without attribute
+Where-Object { $_.DisplayName -like "b*" -or $_.DisplayName -like "c*" }
+```
+
+<a name="powershell-commands-working-with-objects-object-mgmt-group-object-nested-foreach"></a>
+#### Group-Object - Nested Foreach
+
+```powershell
+Get-ChildItem -Path . | Group-Object -Property Extension | `
+Foreach { Write-Host ("`nExtension: " + $_.Name + "`t - Occurrence: " + $_.Count); ` 
+# foreach item in group
+$_.Group | Foreach { Write-Host $_.FullName } }
+```
+
+<a name="powershell-commands-working-with-objects-list-object-attributes"></a>
+### List Object Attributes
+
+```powershell
+<Cmdlet> | Get-Member
+
+Get-WinSystemLocale | Get-Member
 ```
 
 Output:
@@ -232,35 +346,23 @@ TwoLetterISOLanguageName       Property   string TwoLetterISOLanguageName {get;}
 UseUserOverride                Property   bool UseUserOverride {get;}
 ```
 
-<a name="powershell-commands-organize-output"></a>
-## Organize Output
-
-- `Out-File`
-- `Out-GridView` - Window with GridView
-- `Out-Host` - std output
-- `Out-Null` = /dev/null
-- `Out-Printer`
-- `Out-String`
-
-<a name="powershell-commands-working-with-objects"></a>
-## Working with Objects
+<a name="powershell-commands-working-with-objects-inspect-objects"></a>
+### Inspect Objects
 
 ```powershell
-# (object).Attribute
-(Get-Service | Measure-Object).Count
+# append Select-... to a pipe to inspect objects
+Get-ChildItem -Path . | Select-Object -Property * -First 1
 ```
 
-<a name="powershell-commands-working-with-objects-object-mgmt"></a>
-### Object Mgmt
+<a name="powershell-commands-working-with-objects-create-objects"></a>
+### Create Objects
 
-> `<Cmdlet> -Property`
+```powershell
+# Select-Object @{N="AttributeName";E={AttributeValue}}
 
-- `Group-Object`
-- `Measure-Object` - .Count, .Average, .Sum ...
-- `Select-Object`
-- `Sort-Object`
-- `Tee-Object` [-FilePath] [-Variable]
-- `Where-Object` [-Property] [-Value]
+# basic remapping:
+Get-ChildItem -Path . | Select-Object @{N="MyAttribute";E={$_.Extension}},@{N="MyFileName";E={$_.Extension}},@{N="IsJson";E={$_.Extension -Like "*json"}}
+```
 
 <a name="powershell-commands-working-with-objects-export-of-objects"></a>
 ### Export of Objects
@@ -279,7 +381,43 @@ Addition: `ConvertTo-Html` [-As Table]
 > Cmdlets: `ConvertFrom-`*
 
 - `ConvertFrom-Csv`
+  - semicolon separated: `-Delimiter ";"`
+  - tabstop separated: ``-Delimiter "`t"``
 - `ConvertFrom-Json`
+
+Usage:
+
+```powershell
+Get-Content -Path .\data.json | ConvertFrom-Json
+Get-Content -Path .\data.csv | ConvertFrom-Csv -Delimiter "`t"
+```
+
+<a name="powershell-commands-enum"></a>
+## Enum
+
+Get all Enum Values: 
+
+```powershell
+[System.ServiceProcess.ServiceControllerStatus].GetEnumNames() # | Foreach { $_ }
+```
+
+<a name="powershell-commands-regex"></a>
+## Regex
+
+```powershell
+Get-Content -Path "c:\Windows\log.txt" | Select-String -Pattern ".*succeeded.*"
+```
+
+<a name="powershell-commands-array"></a>
+## Array
+
+```powershell
+$array = @("hello","world")
+
+foreach ($item in $array) {
+  New-Item -Type File -Name ($item + ".txt")
+}
+```
 
 <a name="powershell-commands-securestring-credential-mgmt"></a>
 ## SecureString - Credential Mgmt
@@ -315,11 +453,19 @@ $Credential = New-Object -TypeName System.Management.Automation.PSCredential -Ar
 <a name="powershell-commands-pipeline-best-practice"></a>
 ### Best Practice
 
-- Always so as much as possible using the Cmdlets
+- Always do as much as possible using the Cmdlets
   - :thumbsdown: `Get-Process -Name explorer | Stop-Process`
   - **instead:** `Stop-Process -Name explorer`
 - If possible store the return value of the Cmdlet and reuse it in another code-line
   - makes it more maintainable & testable
+
+<a name="powershell-commands-pipeline-foreach-pipe"></a>
+### Foreach Pipe
+
+```powershell
+# $_ = current item
+Get-ChildItem -Path . | Foreach { Write-Host $_.Name "`tlast accessed:" $_.LastAccessTimeUtc }
+```
 
 <a name="powershell-commands-psproviders"></a>
 ## PSProviders
@@ -380,6 +526,21 @@ for read protected items: `-Force`
 - `Get-Content`
 - `Set-Content`
 
+
+<a name="powershell-commands-files-psprovider-filesystem-where-file-size"></a>
+### Where File-Size
+
+```powershell
+Get-ChildItem -Path . | Where-Object -Property Length -GT 1kb # 1mb / 1gb
+```
+
+<a name="powershell-commands-files-psprovider-filesystem-line-word-char-count"></a>
+### Line, Word, Char count
+
+```powershell
+Get-Content -Path "c:\Windows\log.txt" | Measure-Object -Line -Word -Character
+```
+
 <a name="powershell-commands-aliases"></a>
 ## Aliases
 
@@ -400,6 +561,15 @@ Commands:
 - `Import-Alias`
 - `Remove-Item -Path Alias:\gal -Force` to delete an alias
 
+<a name="powershell-commands-aliases-find-corresponding-ps-cmdlet"></a>
+### Find corresponding PS Cmdlet
+
+Output will display the help of the corresponding PS Cmdlet.
+
+```powershell
+dir -?
+```
+
 <a name="powershell-commands-command-master-table"></a>
 ## Command Master Table
 
@@ -412,6 +582,34 @@ Commands:
 | `Test-NetConnection` | ping using a specific port |
 | `Invoke-Item`        | open file with default app |
 |                      |                            |
+
+:arrow_right: [Finding Commands](#find-commands)
+
+<a name="writing-ps-oneliners"></a>
+# Writing PS OneLiners
+
+1. Search (next) Cmdlet :arrow_right: [find-commands](#find-commands)
+2. Write Cmdlet with Parameters :arrow_right: [parameters](#named-parameter)
+3. Inspect Out-Object :arrow_right: [inspect-objects](#inspect-objects)  
+   `<Cmdlet> | Get-Member`  
+   _or_  
+   `<Cmdlet> | Select-Object -Property * -First 1`
+4. _Do i have all required data in an object?_
+   1. **Yes:** `Foreach { # do stuff with $_ }`
+   2. **Nope:** :arrow_right: continue with **1.**
+
+<a name="writing-ps-oneliners-tipps-tricks"></a>
+## Tipps &amp; Tricks
+
+1. Write on multiple lines using ` sign
+
+```powershell
+Get-Service -Name "gupdate" | ` # <= here
+Select-Object -Property DisplayName, Status | ` # <= and here
+Out-File -FilePath "google-update-service.txt"
+```
+
+2. ...
 
 <a name="script-template"></a>
 # Script Template
@@ -472,16 +670,26 @@ $ErrorActionPreference = 'Stop';
 
 #region Functions
 
-function Test-Administrator {
+function Test-IsAdministrator {
     $UserWindowsPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent());
     return $UserWindowsPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator);
+}
+
+function Test-IsWindowsPowershell {
+    return ($PSVersionTable.PSEdition -eq "Desktop");
 }
 
 #endregion Functions
 
 #region Script prechecks
 
-if (-not $(Test-Administrator)) {
+if (-not (Test-IsWindowsPowershell)) {
+    Write-Host 'ERROR: run script with Windows PowerShell.' -ForegroundColor Red;
+    Write-Host 'ERROR: PowerShell Core is not supported' -ForegroundColor Red;
+    exit 1;
+}
+
+if (-not (Test-IsAdministrator)) {
     Write-Host 'ERROR: run script as administrator' -ForegroundColor Red;
     exit 1;
 }
