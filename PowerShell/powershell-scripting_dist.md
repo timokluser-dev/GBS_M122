@@ -1,7 +1,17 @@
 <a name="powershell-commands"></a>
 # PowerShell Commands
 
+<a name="powershell-commands-quick-access"></a>
+## Quick Access
+
+:arrow_right: [Writing PS OneLiners](#writing-ps-oneliners)  
+:arrow_right: [Command Master Table](#command-master-table)
+
+---
+<br>
+
 * [PowerShell Commands](#powershell-commands)
+    * [Quick Access](#powershell-commands-quick-access)
     * [Command Help](#powershell-commands-command-help)
         * [`about_` pages](#powershell-commands-command-help-about_-pages)
     * [Find Commands](#powershell-commands-find-commands)
