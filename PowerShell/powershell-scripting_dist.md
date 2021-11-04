@@ -36,6 +36,7 @@
         * [Parsing of Objects](#powershell-commands-working-with-objects-parsing-of-objects)
     * [Enum](#powershell-commands-enum)
     * [Regex](#powershell-commands-regex)
+    * [Variables](#powershell-commands-variables)
     * [Array](#powershell-commands-array)
     * [SecureString - Credential Mgmt](#powershell-commands-securestring-credential-mgmt)
         * [Create SecureString](#powershell-commands-securestring-credential-mgmt-create-securestring)
@@ -43,6 +44,7 @@
     * [Pipeline](#powershell-commands-pipeline)
         * [Best Practice](#powershell-commands-pipeline-best-practice)
         * [Foreach Pipe](#powershell-commands-pipeline-foreach-pipe)
+    * [Pipe vs. Semicolon](#powershell-commands-pipe-vs-semicolon)
     * [PSProviders](#powershell-commands-psproviders)
     * [PSDrives](#powershell-commands-psdrives)
     * [Items (PSProvider: all)](#powershell-commands-items-psprovider-all)
@@ -226,18 +228,18 @@ Remove-Item .\folder\ -Recurse -Confirm:$false
 
 PowerShell supports the following logical operators.
 
-|Operator|Description                        |Example                   |
-|--------|-----------------------------------|--------------------------|
-|`-and`  |Logical AND. TRUE when both        |`(1 -eq 1) -and (1 -eq 2)`|
-|        |statements are TRUE.               |`False`                   |
-|`-or`   |Logical OR. TRUE when either       |`(1 -eq 1) -or (1 -eq 2)` |
-|        |statement is TRUE.                 |`True`                    |
-|`-xor`  |Logical EXCLUSIVE OR. TRUE when    |`(1 -eq 1) -xor (2 -eq 2)`|
-|        |only one statement is TRUE         |`False`                   |
-|`-not`  |Logical not. Negates the statement |`-not (1 -eq 1)`          |
-|        |that follows.                      |`False`                   |
-|`!`     |Same as `-not`                     |`!(1 -eq 1)`              |
-|        |                                   |`False`                   |
+| Operator | Description                        | Example                    |
+| -------- | ---------------------------------- | -------------------------- |
+| `-and`   | Logical AND. TRUE when both        | `(1 -eq 1) -and (1 -eq 2)` |
+|          | statements are TRUE.               | `False`                    |
+| `-or`    | Logical OR. TRUE when either       | `(1 -eq 1) -or (1 -eq 2)`  |
+|          | statement is TRUE.                 | `True`                     |
+| `-xor`   | Logical EXCLUSIVE OR. TRUE when    | `(1 -eq 1) -xor (2 -eq 2)` |
+|          | only one statement is TRUE         | `False`                    |
+| `-not`   | Logical not. Negates the statement | `-not (1 -eq 1)`           |
+|          | that follows.                      | `False`                    |
+| `!`      | Same as `-not`                     | `!(1 -eq 1)`               |
+|          |                                    | `False`                    |
 
 Source: https://github.com/MicrosoftDocs/PowerShell-Docs/blob/staging/reference/7.1/Microsoft.PowerShell.Core/About/about_Logical_Operators.md?plain=1#L28
 
@@ -247,8 +249,8 @@ Source: https://github.com/MicrosoftDocs/PowerShell-Docs/blob/staging/reference/
 Comparison operators let you compare values or finding values that match
 specified patterns. PowerShell includes the following comparison operators:
 
-|    Type     |   Operator     |              Comparison test              |
-| ----------- | ------------   | ----------------------------------------- |
+| Type        | Operator       | Comparison test                           |
+| ----------- | -------------- | ----------------------------------------- |
 | Equality    | `-eq`          | equals                                    |
 |             | `-ne`          | not equals                                |
 |             | `-gt`          | greater than                              |
@@ -289,7 +291,8 @@ null in PowerShell: `$null`
 - `Select-Object`
 - `Sort-Object`
 - `Tee-Object` [-FilePath] [-Variable]
-- `Where-Object` [-Property] [-Value]
+- `Where-Object` [-Property] [-Value] [-Match]
+  - `Where-Object -Property <Property> -Match "."` sort out objects with empty property
 
 <a name="powershell-commands-working-with-objects-object-mgmt-where-object-multi-conditions"></a>
 #### Where-Object - Multi Conditions
@@ -418,6 +421,21 @@ Get all Enum Values:
 Get-Content -Path "c:\Windows\log.txt" | Select-String -Pattern ".*succeeded.*"
 ```
 
+<a name="powershell-commands-variables"></a>
+## Variables
+
+```powershell
+# implicit:
+$variable = "hello world"
+# explicit:
+[string] $str = "hello world"
+
+# variable in parameter:
+# -> `Get-Help <Cmdlet> -Full` to see types of parameters
+$color = [System.ConsoleColor]::Green
+Write-Host "hello world" -ForegroundColor $color
+```
+
 <a name="powershell-commands-array"></a>
 ## Array
 
@@ -460,6 +478,8 @@ $Credential = New-Object -TypeName System.Management.Automation.PSCredential -Ar
 <a name="powershell-commands-pipeline"></a>
 ## Pipeline
 
+> :heavy_exclamation_mark: PowerShell passes **objects** through pipelines and not character streams as in Linux
+
 <a name="powershell-commands-pipeline-best-practice"></a>
 ### Best Practice
 
@@ -475,6 +495,21 @@ $Credential = New-Object -TypeName System.Management.Automation.PSCredential -Ar
 ```powershell
 # $_ = current item
 Get-ChildItem -Path . | Foreach { Write-Host $_.Name "`tlast accessed:" $_.LastAccessTimeUtc }
+```
+
+<a name="powershell-commands-pipe-vs-semicolon"></a>
+## Pipe vs. Semicolon
+
+|               |                                                       |
+| ------------- | ----------------------------------------------------- |
+| Pipe `\|`     | **Pass an object** from one Cmdlet to another         |
+| Semicolon `;` | **Run Cmdlet after** the previous - command separators |
+
+Example:
+```powershell
+New-Item -Path file.ts | Invoke-Item
+
+New-Item -Path file.ts ; Invoke-Item -Path file.ts
 ```
 
 <a name="powershell-commands-psproviders"></a>
@@ -510,21 +545,29 @@ for read protected items: `-Force`
 
 - `Get-Item`
 - `Get-ChildItem` [-Recurse]
+  - bash: `ls`
 - `Get-ItemProperty`
 - `Set-Item`
+  - for files: `New-Item`
 - `Set-ItemProperty`
 - `Clear-Item` delete item's content
 - `Clear-ItemProperty`
 - `Copy-Item`
+  - bash: `cp`
 - `Copy-ItemProperty`
 - `Invoke-Item` open file with associated default app
+  - bash: `open`
 - `Move-Item`
+  - bash: `mv`
 - `Move-ItemProperty`
-- `New-Item` [-ItemType]
+- `New-Item` [-Path] [-ItemType]
+  - bash: `touch` ; `>>`
 - `New-ItemProperty`
 - `Remove-Item`
+  - bash: `rm`
 - `Remove-ItemProperty`
 - `Rename-Item`
+  - bash: `mv`
 - `Rename-ItemProperty`
 
 
@@ -588,6 +631,8 @@ dir -?
 | `Get-History`        | list command history       |
 | `Get-NetIPAddress`   | get ipconfig               |
 | `Get-Module`         | show local PS modules      |
+| `Get-Process`        | get all processes          |
+| `Get-Service`        | get all services           |
 | `Test-Connection`    | ping a computer            |
 | `Test-NetConnection` | ping using a specific port |
 | `Invoke-Item`        | open file with default app |
@@ -619,7 +664,24 @@ Select-Object -Property DisplayName, Status | ` # <= and here
 Out-File -FilePath "google-update-service.txt"
 ```
 
-2. ...
+2. Continue on Error `-ErrorAction SilentlyContinue`
+
+if a cmdlet in a pipe failed, the pipeline wouldn't continue.  
+some errors, such as folder exists, can be safely ignored by appending the common parameter `-ErrorAction`.
+
+```powershell
+New-Item -Path ./existing-folder -ItemType Directory -ErrorAction SilentlyContinue | Write-Host "folder created"
+```
+
+3. Parameter with calculated props
+
+```powershell
+# won't work:
+New-Item -Path "file" + $_.Extension 
+
+# solution:
+New-Item -Path ("file" + $_.Extension)
+```
 
 <a name="script-template"></a>
 # Script Template
