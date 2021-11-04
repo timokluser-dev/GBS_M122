@@ -5,8 +5,8 @@
   "private": "true",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:bash": "npx gitdown ./Bash/bash-commands.md --output-file ./Bash/bash-commands_dist.md",
-    "docs:powershell": "npx gitdown ./PowerShell/powershell-scripting.md --output-file ./PowerShell/powershell-scripting_dist.md",
+    "docs:bash": "gitdown ./Bash/bash-commands.md --output-file ./Bash/bash-commands_dist.md",
+    "docs:powershell": "gitdown ./PowerShell/powershell-scripting.md --output-file ./PowerShell/powershell-scripting_dist.md",
     "docs": "npm-run-all docs:*"
   },
   "repository": {
