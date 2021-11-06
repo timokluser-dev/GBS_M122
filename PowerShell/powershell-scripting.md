@@ -227,6 +227,7 @@ null in PowerShell: `$null`
 - `Tee-Object` [-FilePath] [-Variable]
 - `Where-Object` [-Property] [-Value] [-Match]
   - `Where-Object -Property <Property> -Match "."` sort out objects with empty property
+- `ForEach-Object`
 
 #### Where-Object - Multi Conditions
 
@@ -243,6 +244,14 @@ Get-ChildItem -Path . | Group-Object -Property Extension | `
 Foreach { Write-Host ("`nExtension: " + $_.Name + "`t - Occurrence: " + $_.Count); ` 
 # foreach item in group
 $_.Group | Foreach { Write-Host $_.FullName } }
+```
+
+#### ForEach-Object
+
+```powershell
+# <Cmdlet> | ForEach-Object -Process { ... }
+Get-EventLog -LogName System -Newest 10 | `
+ForEach-Object -Process { Write-Host ($_.TimeGenerated.ToString() + " -- " + $_.Message) }
 ```
 
 ### List Object Attributes
