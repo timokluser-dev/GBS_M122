@@ -8,7 +8,7 @@
 ---
 <br>
 
-{"gitdown": "contents"}
+{"gitdown": "contents", "maxLevel": 9}
 
 ## Command Help
 
