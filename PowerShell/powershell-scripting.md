@@ -1,4 +1,4 @@
-# PowerShell Commands
+# PowerShell
 
 ## Quick Access
 
@@ -441,12 +441,34 @@ New-Item -Path file.ts ; Invoke-Item -Path file.ts
 
 :arrow_right: `Get-PSProvider`
 
-Use the `Drives` as prefix in `-Path` parameters (e.g. `Env:PATH`)
+```
+Name                 Capabilities                          Drives
+----                 ------------                          ------
+Registry             ShouldProcess, Transactions           {HKLM, HKCU}
+Alias                ShouldProcess                         {Alias}
+Environment          ShouldProcess                         {Env}
+FileSystem           Filter, ShouldProcess, Credentials    {C, D}
+Function             ShouldProcess                         {Function}
+Variable             ShouldProcess                         {Variable}
+Certificate          ShouldProcess                         {Cert}
+WSMan                Credentials                           {WSMan}
+```
+
+Use the `Drives` as prefix in `-Path` parameters (e.g. `Env:\PATH`)
+
+<br>
 
 ```powershell
-Get-Item -Path "c:\temp\file.txt"
-Get-Item -Path "Env:PATH"
-# ... - Get-Command -Noun Item
+Get-Item -Path "C:\temp\file.txt"
+Get-Item -Path "Env:\PATH"
+
+# for registry use:
+Get-ItemProperty -Path "HKCU:\Control Panel\Colors\" -Name "Menu"
+Get-ItemProperty -Path "HKLM:\SYSTEM\State\DateTime\" -Name "NTP Enabled"
+
+New-Item -Path "HKCU:\UpdateStatus"
+New-ItemProperty -Path "HKCU:\UpdateStatus" -Name "UpdateSuccessful" -Value 1
+Remove-ItemProperty -Path "HKCU:\UpdateStatus" -Name "UpdateSuccessful" -Force
 ```
 
 ## PSDrives
@@ -454,12 +476,18 @@ Get-Item -Path "Env:PATH"
 Get all available physical & virtual filesystems:
 
 ```powershell
-Get-PSDrives
+Get-PSDrive
 ```
 
 All drive's name are also valid PSProviders
 
 @see: `New-PSDrive`, `Remove-PSDrive`
+
+```powershell
+New-PSDrive -Name "user" -Root $env:USERPROFILE -PSProvider FileSystem
+
+Remove-PSDrive -Name "user" -Force
+```
 
 ## Items (PSProvider: all)
 
@@ -552,6 +580,10 @@ dir -?
 | `Test-Connection`    | ping a computer            |
 | `Test-NetConnection` | ping using a specific port |
 | `Invoke-Item`        | open file with default app |
+| `Invoke-WebRequest`  | get & post content to url  |
+| `Start-Sleep`        | pause script               |
+| `Start-Job`          | run script as job in bg    |
+| `Get-Job`            | get all script jobs        |
 |                      |                            |
 
 :arrow_right: [Finding Commands](#find-commands)

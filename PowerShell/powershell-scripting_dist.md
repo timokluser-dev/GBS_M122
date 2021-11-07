@@ -1,7 +1,7 @@
-<a name="powershell-commands"></a>
-# PowerShell Commands
+<a name="powershell"></a>
+# PowerShell
 
-<a name="powershell-commands-quick-access"></a>
+<a name="powershell-quick-access"></a>
 ## Quick Access
 
 :arrow_right: [Writing PS OneLiners](#writing-ps-oneliners)  
@@ -10,59 +10,59 @@
 ---
 <br>
 
-* [PowerShell Commands](#powershell-commands)
-    * [Quick Access](#powershell-commands-quick-access)
-    * [Command Help](#powershell-commands-command-help)
-        * [`about_` pages](#powershell-commands-command-help-about_-pages)
-    * [Find Commands](#powershell-commands-find-commands)
-    * [Directory Navigation](#powershell-commands-directory-navigation)
-    * [Environment Variables - $env](#powershell-commands-environment-variables-env)
-    * [Syntax](#powershell-commands-syntax)
-        * [Named Parameter](#powershell-commands-syntax-named-parameter)
-        * [Switch Parameter](#powershell-commands-syntax-switch-parameter)
-        * [Position Parameter](#powershell-commands-syntax-position-parameter)
-        * [Common Parameters](#powershell-commands-syntax-common-parameters)
-        * [`-WhatIf`](#powershell-commands-syntax-whatif)
-        * [`-Confirm`](#powershell-commands-syntax-confirm)
-    * [Organize Output](#powershell-commands-organize-output)
-    * [Logical Operators](#powershell-commands-logical-operators)
-    * [Comparison Operators](#powershell-commands-comparison-operators)
-    * [Working with Objects](#powershell-commands-working-with-objects)
-        * [Object Mgmt](#powershell-commands-working-with-objects-object-mgmt)
-            * [Where-Object - Multi Conditions](#powershell-commands-working-with-objects-object-mgmt-where-object-multi-conditions)
-            * [Group-Object - Nested Foreach](#powershell-commands-working-with-objects-object-mgmt-group-object-nested-foreach)
-            * [ForEach-Object](#powershell-commands-working-with-objects-object-mgmt-foreach-object)
-        * [List Object Attributes](#powershell-commands-working-with-objects-list-object-attributes)
-        * [Inspect Objects](#powershell-commands-working-with-objects-inspect-objects)
-        * [Create Objects](#powershell-commands-working-with-objects-create-objects)
-        * [Export of Objects](#powershell-commands-working-with-objects-export-of-objects)
-        * [Parsing of Objects](#powershell-commands-working-with-objects-parsing-of-objects)
-    * [Enum](#powershell-commands-enum)
-    * [Regex](#powershell-commands-regex)
-    * [Variables](#powershell-commands-variables)
-    * [Array](#powershell-commands-array)
-    * [SecureString - Credential Mgmt](#powershell-commands-securestring-credential-mgmt)
-        * [Create SecureString](#powershell-commands-securestring-credential-mgmt-create-securestring)
-        * [PSCredentials](#powershell-commands-securestring-credential-mgmt-pscredentials)
-    * [Pipeline](#powershell-commands-pipeline)
-        * [Best Practice](#powershell-commands-pipeline-best-practice)
-        * [Foreach Pipe](#powershell-commands-pipeline-foreach-pipe)
-    * [Pipe vs. Semicolon](#powershell-commands-pipe-vs-semicolon)
-    * [PSProviders](#powershell-commands-psproviders)
-    * [PSDrives](#powershell-commands-psdrives)
-    * [Items (PSProvider: all)](#powershell-commands-items-psprovider-all)
-    * [Files (PSProvider: `FileSystem`)](#powershell-commands-files-psprovider-filesystem)
-        * [Where File-Size](#powershell-commands-files-psprovider-filesystem-where-file-size)
-        * [Line, Word, Char count](#powershell-commands-files-psprovider-filesystem-line-word-char-count)
-    * [Aliases](#powershell-commands-aliases)
-        * [Find corresponding PS Cmdlet](#powershell-commands-aliases-find-corresponding-ps-cmdlet)
-    * [Command Master Table](#powershell-commands-command-master-table)
+* [PowerShell](#powershell)
+    * [Quick Access](#powershell-quick-access)
+    * [Command Help](#powershell-command-help)
+        * [`about_` pages](#powershell-command-help-about_-pages)
+    * [Find Commands](#powershell-find-commands)
+    * [Directory Navigation](#powershell-directory-navigation)
+    * [Environment Variables - $env](#powershell-environment-variables-env)
+    * [Syntax](#powershell-syntax)
+        * [Named Parameter](#powershell-syntax-named-parameter)
+        * [Switch Parameter](#powershell-syntax-switch-parameter)
+        * [Position Parameter](#powershell-syntax-position-parameter)
+        * [Common Parameters](#powershell-syntax-common-parameters)
+        * [`-WhatIf`](#powershell-syntax-whatif)
+        * [`-Confirm`](#powershell-syntax-confirm)
+    * [Organize Output](#powershell-organize-output)
+    * [Logical Operators](#powershell-logical-operators)
+    * [Comparison Operators](#powershell-comparison-operators)
+    * [Working with Objects](#powershell-working-with-objects)
+        * [Object Mgmt](#powershell-working-with-objects-object-mgmt)
+            * [Where-Object - Multi Conditions](#powershell-working-with-objects-object-mgmt-where-object-multi-conditions)
+            * [Group-Object - Nested Foreach](#powershell-working-with-objects-object-mgmt-group-object-nested-foreach)
+            * [ForEach-Object](#powershell-working-with-objects-object-mgmt-foreach-object)
+        * [List Object Attributes](#powershell-working-with-objects-list-object-attributes)
+        * [Inspect Objects](#powershell-working-with-objects-inspect-objects)
+        * [Create Objects](#powershell-working-with-objects-create-objects)
+        * [Export of Objects](#powershell-working-with-objects-export-of-objects)
+        * [Parsing of Objects](#powershell-working-with-objects-parsing-of-objects)
+    * [Enum](#powershell-enum)
+    * [Regex](#powershell-regex)
+    * [Variables](#powershell-variables)
+    * [Array](#powershell-array)
+    * [SecureString - Credential Mgmt](#powershell-securestring-credential-mgmt)
+        * [Create SecureString](#powershell-securestring-credential-mgmt-create-securestring)
+        * [PSCredentials](#powershell-securestring-credential-mgmt-pscredentials)
+    * [Pipeline](#powershell-pipeline)
+        * [Best Practice](#powershell-pipeline-best-practice)
+        * [Foreach Pipe](#powershell-pipeline-foreach-pipe)
+    * [Pipe vs. Semicolon](#powershell-pipe-vs-semicolon)
+    * [PSProviders](#powershell-psproviders)
+    * [PSDrives](#powershell-psdrives)
+    * [Items (PSProvider: all)](#powershell-items-psprovider-all)
+    * [Files (PSProvider: `FileSystem`)](#powershell-files-psprovider-filesystem)
+        * [Where File-Size](#powershell-files-psprovider-filesystem-where-file-size)
+        * [Line, Word, Char count](#powershell-files-psprovider-filesystem-line-word-char-count)
+    * [Aliases](#powershell-aliases)
+        * [Find corresponding PS Cmdlet](#powershell-aliases-find-corresponding-ps-cmdlet)
+    * [Command Master Table](#powershell-command-master-table)
 * [Writing PS OneLiners](#writing-ps-oneliners)
     * [Tipps & Tricks](#writing-ps-oneliners-tipps-tricks)
 * [Script Template](#script-template)
 
 
-<a name="powershell-commands-command-help"></a>
+<a name="powershell-command-help"></a>
 ## Command Help
 
 ```powershell
@@ -76,7 +76,7 @@ Update-Help
 ```
 To download latest help from MS Docs
 
-<a name="powershell-commands-command-help-about_-pages"></a>
+<a name="powershell-command-help-about_-pages"></a>
 ### <code>about_</code> pages
 
 ```powershell
@@ -86,7 +86,7 @@ Get-Help about_*
 Get-Help about_CommonParameters
 ```
 
-<a name="powershell-commands-find-commands"></a>
+<a name="powershell-find-commands"></a>
 ## Find Commands
 
 ```powershell
@@ -95,7 +95,7 @@ Get-Command -Verb Set
 Get-Command -Module Azure.Storage
 ```
 
-<a name="powershell-commands-directory-navigation"></a>
+<a name="powershell-directory-navigation"></a>
 ## Directory Navigation
 
 `$PSScriptRoot` - the folder containing the PowerShell script
@@ -103,7 +103,7 @@ Get-Command -Module Azure.Storage
 - `Get-Location`
 - `Set-Location`
 
-<a name="powershell-commands-environment-variables-env"></a>
+<a name="powershell-environment-variables-env"></a>
 ## Environment Variables - $env
 
 ```powershell
@@ -118,7 +118,7 @@ Write-Host $env:Z_TEST
 Get-Item -Path "env:\"
 ```
 
-<a name="powershell-commands-syntax"></a>
+<a name="powershell-syntax"></a>
 ## Syntax
 
 ```
@@ -130,7 +130,7 @@ Verb-Substantive [-Parameter [Value]]
 | `Verb`        | Get, Set, Write ...                                 |
 | `Substantive` | Service, Object, EventLog ... - **always singular** |
 
-<a name="powershell-commands-syntax-named-parameter"></a>
+<a name="powershell-syntax-named-parameter"></a>
 ### Named Parameter
 
 ```powershell
@@ -139,7 +139,7 @@ Verb-Substantive [-Parameter [Value]]
 Get-Command -Noun "service"
 ```
 
-<a name="powershell-commands-syntax-switch-parameter"></a>
+<a name="powershell-syntax-switch-parameter"></a>
 ### Switch Parameter
 
 ```powershell
@@ -148,7 +148,7 @@ Get-Command -Noun "service"
 Get-ChildItem -Recurse
 ```
 
-<a name="powershell-commands-syntax-position-parameter"></a>
+<a name="powershell-syntax-position-parameter"></a>
 ### Position Parameter
 
 > :information_source: Use **named parameters** instead to avoid script bugs after changes on the core cmdlets done by MSFT
@@ -160,7 +160,7 @@ Get-Process "powershell"
 # = Get-Process -Name "powershell"
 ```
 
-<a name="powershell-commands-syntax-common-parameters"></a>
+<a name="powershell-syntax-common-parameters"></a>
 ### Common Parameters
 
 > `about_CommonParameters`
@@ -192,7 +192,7 @@ try {
 }
 ```
 
-<a name="powershell-commands-syntax-whatif"></a>
+<a name="powershell-syntax-whatif"></a>
 ### <code>-WhatIf</code>
 
 > `-WhatIf` shows the effect of the command without executing it.
@@ -207,7 +207,7 @@ Output:
 What if: Performing the operation "Create File" on target "Destination: C:\Users\vmadmin\test.txt".
 ```
 
-<a name="powershell-commands-syntax-confirm"></a>
+<a name="powershell-syntax-confirm"></a>
 ### <code>-Confirm</code>
 
 > Specify if a confirmation is needed
@@ -216,7 +216,7 @@ What if: Performing the operation "Create File" on target "Destination: C:\Users
 Remove-Item .\folder\ -Recurse -Confirm:$false
 ```
 
-<a name="powershell-commands-organize-output"></a>
+<a name="powershell-organize-output"></a>
 ## Organize Output
 
 - `Out-File`
@@ -226,7 +226,7 @@ Remove-Item .\folder\ -Recurse -Confirm:$false
 - `Out-Printer`
 - `Out-String`
 
-<a name="powershell-commands-logical-operators"></a>
+<a name="powershell-logical-operators"></a>
 ## Logical Operators
 
 PowerShell supports the following logical operators.
@@ -246,7 +246,7 @@ PowerShell supports the following logical operators.
 
 Source: https://github.com/MicrosoftDocs/PowerShell-Docs/blob/staging/reference/7.1/Microsoft.PowerShell.Core/About/about_Logical_Operators.md?plain=1#L28
 
-<a name="powershell-commands-comparison-operators"></a>
+<a name="powershell-comparison-operators"></a>
 ## Comparison Operators
 
 Comparison operators let you compare values or finding values that match
@@ -274,7 +274,7 @@ specified patterns. PowerShell includes the following comparison operators:
 
 Source: https://github.com/MicrosoftDocs/PowerShell-Docs/blob/staging/reference/7.1/Microsoft.PowerShell.Core/About/about_Comparison_Operators.md?plain=1#L18
 
-<a name="powershell-commands-working-with-objects"></a>
+<a name="powershell-working-with-objects"></a>
 ## Working with Objects
 
 null in PowerShell: `$null`
@@ -284,7 +284,7 @@ null in PowerShell: `$null`
 (Get-Service | Measure-Object).Count
 ```
 
-<a name="powershell-commands-working-with-objects-object-mgmt"></a>
+<a name="powershell-working-with-objects-object-mgmt"></a>
 ### Object Mgmt
 
 > `<Cmdlet> -Property`
@@ -298,7 +298,7 @@ null in PowerShell: `$null`
   - `Where-Object -Property <Property> -Match "."` sort out objects with empty property
 - `ForEach-Object`
 
-<a name="powershell-commands-working-with-objects-object-mgmt-where-object-multi-conditions"></a>
+<a name="powershell-working-with-objects-object-mgmt-where-object-multi-conditions"></a>
 #### Where-Object - Multi Conditions
 
 ```powershell
@@ -307,7 +307,7 @@ null in PowerShell: `$null`
 Where-Object { $_.DisplayName -like "b*" -or $_.DisplayName -like "c*" }
 ```
 
-<a name="powershell-commands-working-with-objects-object-mgmt-group-object-nested-foreach"></a>
+<a name="powershell-working-with-objects-object-mgmt-group-object-nested-foreach"></a>
 #### Group-Object - Nested Foreach
 
 ```powershell
@@ -317,7 +317,7 @@ Foreach { Write-Host ("`nExtension: " + $_.Name + "`t - Occurrence: " + $_.Count
 $_.Group | Foreach { Write-Host $_.FullName } }
 ```
 
-<a name="powershell-commands-working-with-objects-object-mgmt-foreach-object"></a>
+<a name="powershell-working-with-objects-object-mgmt-foreach-object"></a>
 #### ForEach-Object
 
 ```powershell
@@ -326,7 +326,7 @@ Get-EventLog -LogName System -Newest 10 | `
 ForEach-Object -Process { Write-Host ($_.TimeGenerated.ToString() + " -- " + $_.Message) }
 ```
 
-<a name="powershell-commands-working-with-objects-list-object-attributes"></a>
+<a name="powershell-working-with-objects-list-object-attributes"></a>
 ### List Object Attributes
 
 ```powershell
@@ -372,7 +372,7 @@ TwoLetterISOLanguageName       Property   string TwoLetterISOLanguageName {get;}
 UseUserOverride                Property   bool UseUserOverride {get;}
 ```
 
-<a name="powershell-commands-working-with-objects-inspect-objects"></a>
+<a name="powershell-working-with-objects-inspect-objects"></a>
 ### Inspect Objects
 
 ```powershell
@@ -380,7 +380,7 @@ UseUserOverride                Property   bool UseUserOverride {get;}
 Get-ChildItem -Path . | Select-Object -Property * -First 1
 ```
 
-<a name="powershell-commands-working-with-objects-create-objects"></a>
+<a name="powershell-working-with-objects-create-objects"></a>
 ### Create Objects
 
 ```powershell
@@ -390,7 +390,7 @@ Get-ChildItem -Path . | Select-Object -Property * -First 1
 Get-ChildItem -Path . | Select-Object @{N="MyAttribute";E={$_.Extension}},@{N="MyFileName";E={$_.Extension}},@{N="IsJson";E={$_.Extension -Like "*json"}}
 ```
 
-<a name="powershell-commands-working-with-objects-export-of-objects"></a>
+<a name="powershell-working-with-objects-export-of-objects"></a>
 ### Export of Objects
 
 > Cmdlets: `ConvertTo-`*
@@ -401,7 +401,7 @@ Get-ChildItem -Path . | Select-Object @{N="MyAttribute";E={$_.Extension}},@{N="M
 
 Addition: `ConvertTo-Html` [-As Table]
 
-<a name="powershell-commands-working-with-objects-parsing-of-objects"></a>
+<a name="powershell-working-with-objects-parsing-of-objects"></a>
 ### Parsing of Objects
 
 > Cmdlets: `ConvertFrom-`*
@@ -418,7 +418,7 @@ Get-Content -Path .\data.json | ConvertFrom-Json
 Get-Content -Path .\data.csv | ConvertFrom-Csv -Delimiter "`t"
 ```
 
-<a name="powershell-commands-enum"></a>
+<a name="powershell-enum"></a>
 ## Enum
 
 Get all Enum Values: 
@@ -427,14 +427,14 @@ Get all Enum Values:
 [System.ServiceProcess.ServiceControllerStatus].GetEnumNames() # | Foreach { $_ }
 ```
 
-<a name="powershell-commands-regex"></a>
+<a name="powershell-regex"></a>
 ## Regex
 
 ```powershell
 Get-Content -Path "c:\Windows\log.txt" | Select-String -Pattern ".*succeeded.*"
 ```
 
-<a name="powershell-commands-variables"></a>
+<a name="powershell-variables"></a>
 ## Variables
 
 ```powershell
@@ -449,7 +449,7 @@ $color = [System.ConsoleColor]::Green
 Write-Host "hello world" -ForegroundColor $color
 ```
 
-<a name="powershell-commands-array"></a>
+<a name="powershell-array"></a>
 ## Array
 
 ```powershell
@@ -460,13 +460,13 @@ foreach ($item in $array) {
 }
 ```
 
-<a name="powershell-commands-securestring-credential-mgmt"></a>
+<a name="powershell-securestring-credential-mgmt"></a>
 ## SecureString - Credential Mgmt
 
 SecretStrings in PS can be used to store user passwords or so.  
 **Attention: SecretString can be decrypted and is not one-way hashing**
 
-<a name="powershell-commands-securestring-credential-mgmt-create-securestring"></a>
+<a name="powershell-securestring-credential-mgmt-create-securestring"></a>
 ### Create SecureString
 
 > :heavy_exclamation_mark: when using `-AsPlainText` always append `-Force`
@@ -477,7 +477,7 @@ $SecretOne = ConvertTo-SecureString -String "super secret" -AsPlainText -Force
 $SecretTwo = Read-Host -AsSecureString
 ```
 
-<a name="powershell-commands-securestring-credential-mgmt-pscredentials"></a>
+<a name="powershell-securestring-credential-mgmt-pscredentials"></a>
 ### PSCredentials
 
 > :heavy_exclamation_mark: Do not store passwords in a script - use env variables
@@ -488,12 +488,12 @@ $Password = ConvertTo-SecureString -String "P@sSwOrd" -AsPlainText -Force
 $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $Password
 ```
 
-<a name="powershell-commands-pipeline"></a>
+<a name="powershell-pipeline"></a>
 ## Pipeline
 
 > :heavy_exclamation_mark: PowerShell passes **objects** through pipelines and not character streams as in Linux
 
-<a name="powershell-commands-pipeline-best-practice"></a>
+<a name="powershell-pipeline-best-practice"></a>
 ### Best Practice
 
 - Always do as much as possible using the Cmdlets
@@ -502,7 +502,7 @@ $Credential = New-Object -TypeName System.Management.Automation.PSCredential -Ar
 - If possible store the return value of the Cmdlet and reuse it in another code-line
   - makes it more maintainable & testable
 
-<a name="powershell-commands-pipeline-foreach-pipe"></a>
+<a name="powershell-pipeline-foreach-pipe"></a>
 ### Foreach Pipe
 
 ```powershell
@@ -510,7 +510,7 @@ $Credential = New-Object -TypeName System.Management.Automation.PSCredential -Ar
 Get-ChildItem -Path . | Foreach { Write-Host $_.Name "`tlast accessed:" $_.LastAccessTimeUtc }
 ```
 
-<a name="powershell-commands-pipe-vs-semicolon"></a>
+<a name="powershell-pipe-vs-semicolon"></a>
 ## Pipe vs. Semicolon
 
 |               |                                                       |
@@ -525,33 +525,61 @@ New-Item -Path file.ts | Invoke-Item
 New-Item -Path file.ts ; Invoke-Item -Path file.ts
 ```
 
-<a name="powershell-commands-psproviders"></a>
+<a name="powershell-psproviders"></a>
 ## PSProviders
 
 :arrow_right: `Get-PSProvider`
 
-Use the `Drives` as prefix in `-Path` parameters (e.g. `Env:PATH`)
-
-```powershell
-Get-Item -Path "c:\temp\file.txt"
-Get-Item -Path "Env:PATH"
-# ... - Get-Command -Noun Item
+```
+Name                 Capabilities                          Drives
+----                 ------------                          ------
+Registry             ShouldProcess, Transactions           {HKLM, HKCU}
+Alias                ShouldProcess                         {Alias}
+Environment          ShouldProcess                         {Env}
+FileSystem           Filter, ShouldProcess, Credentials    {C, D}
+Function             ShouldProcess                         {Function}
+Variable             ShouldProcess                         {Variable}
+Certificate          ShouldProcess                         {Cert}
+WSMan                Credentials                           {WSMan}
 ```
 
-<a name="powershell-commands-psdrives"></a>
+Use the `Drives` as prefix in `-Path` parameters (e.g. `Env:\PATH`)
+
+<br>
+
+```powershell
+Get-Item -Path "C:\temp\file.txt"
+Get-Item -Path "Env:\PATH"
+
+# for registry use:
+Get-ItemProperty -Path "HKCU:\Control Panel\Colors\" -Name "Menu"
+Get-ItemProperty -Path "HKLM:\SYSTEM\State\DateTime\" -Name "NTP Enabled"
+
+New-Item -Path "HKCU:\UpdateStatus"
+New-ItemProperty -Path "HKCU:\UpdateStatus" -Name "UpdateSuccessful" -Value 1
+Remove-ItemProperty -Path "HKCU:\UpdateStatus" -Name "UpdateSuccessful" -Force
+```
+
+<a name="powershell-psdrives"></a>
 ## PSDrives
 
 Get all available physical & virtual filesystems:
 
 ```powershell
-Get-PSDrives
+Get-PSDrive
 ```
 
 All drive's name are also valid PSProviders
 
 @see: `New-PSDrive`, `Remove-PSDrive`
 
-<a name="powershell-commands-items-psprovider-all"></a>
+```powershell
+New-PSDrive -Name "user" -Root $env:USERPROFILE -PSProvider FileSystem
+
+Remove-PSDrive -Name "user" -Force
+```
+
+<a name="powershell-items-psprovider-all"></a>
 ## Items (PSProvider: all)
 
 for read protected items: `-Force`
@@ -584,7 +612,7 @@ for read protected items: `-Force`
 - `Rename-ItemProperty`
 
 
-<a name="powershell-commands-files-psprovider-filesystem"></a>
+<a name="powershell-files-psprovider-filesystem"></a>
 ## Files (PSProvider: <code>FileSystem</code>)
 
 - `Add-Content`
@@ -593,21 +621,21 @@ for read protected items: `-Force`
 - `Set-Content`
 
 
-<a name="powershell-commands-files-psprovider-filesystem-where-file-size"></a>
+<a name="powershell-files-psprovider-filesystem-where-file-size"></a>
 ### Where File-Size
 
 ```powershell
 Get-ChildItem -Path . | Where-Object -Property Length -GT 1kb # 1mb / 1gb
 ```
 
-<a name="powershell-commands-files-psprovider-filesystem-line-word-char-count"></a>
+<a name="powershell-files-psprovider-filesystem-line-word-char-count"></a>
 ### Line, Word, Char count
 
 ```powershell
 Get-Content -Path "c:\Windows\log.txt" | Measure-Object -Line -Word -Character
 ```
 
-<a name="powershell-commands-aliases"></a>
+<a name="powershell-aliases"></a>
 ## Aliases
 
 > :information_source: PowerShell does not support parameters in aliases
@@ -627,7 +655,7 @@ Commands:
 - `Import-Alias`
 - `Remove-Item -Path Alias:\gal -Force` to delete an alias
 
-<a name="powershell-commands-aliases-find-corresponding-ps-cmdlet"></a>
+<a name="powershell-aliases-find-corresponding-ps-cmdlet"></a>
 ### Find corresponding PS Cmdlet
 
 Output will display the help of the corresponding PS Cmdlet.
@@ -636,7 +664,7 @@ Output will display the help of the corresponding PS Cmdlet.
 dir -?
 ```
 
-<a name="powershell-commands-command-master-table"></a>
+<a name="powershell-command-master-table"></a>
 ## Command Master Table
 
 | Command              | Purpose                    |
@@ -649,6 +677,10 @@ dir -?
 | `Test-Connection`    | ping a computer            |
 | `Test-NetConnection` | ping using a specific port |
 | `Invoke-Item`        | open file with default app |
+| `Invoke-WebRequest`  | get & post content to url  |
+| `Start-Sleep`        | pause script               |
+| `Start-Job`          | run script as job in bg    |
+| `Get-Job`            | get all script jobs        |
 |                      |                            |
 
 :arrow_right: [Finding Commands](#find-commands)
