@@ -709,7 +709,7 @@ Select-Object -Property DisplayName, Status | ` # <= and here
 Out-File -FilePath "google-update-service.txt"
 ```
 
-2. Continue on Errgor `-ErrorAction SilentlyContinue`
+2. Continue on Error `-ErrorAction SilentlyContinue`
 
 if a cmdlet in a pipe failed, the pipeline wouldn't continue.  
 some errors, such as folder exists, can be safely ignored by appending the common parameter `-ErrorAction`.
