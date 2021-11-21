@@ -118,18 +118,6 @@ Get-Process "powershell"
 
 > 💡 Set any Common Parameter using the `$<CommonParameter>Preference` variable
 
-Example:
-
-```powershell
-$ErrorActionPreference = "Stop";
-
-try {
-    Get-ChildItem C:\nonExistingFolder
-} catch [Exception] {
-    Write-Host "caught"
-}
-```
-
 ### `-WhatIf`
 
 > `-WhatIf` shows the effect of the command without executing it.
@@ -177,6 +165,9 @@ PowerShell supports the following logical operators.
 |          | that follows.                      | `False`                    |
 | `!`      | Same as `-not`                     | `!(1 -eq 1)`               |
 |          |                                    | `False`                    |
+
+**Case-Sentitive:** Prefix `-c` (e.g. `$_.ProcessName -cmatch "^W"`)  
+**Case-Insensitive:** Prefix `-i` (e.g. `$_.ProcessName -imatch "^W"`)  
 
 Source: https://github.com/MicrosoftDocs/PowerShell-Docs/blob/staging/reference/7.1/Microsoft.PowerShell.Core/About/about_Logical_Operators.md?plain=1#L28
 
@@ -362,6 +353,8 @@ Get-Content -Path "c:\Windows\log.txt" | Select-String -Pattern ".*succeeded.*"
 $variable = "hello world"
 # explicit:
 [string] $str = "hello world"
+# unset:
+$str = $null
 
 # variable in parameter:
 # -> `Get-Help <Cmdlet> -Full` to see types of parameters
@@ -369,10 +362,25 @@ $color = [System.ConsoleColor]::Green
 Write-Host "hello world" -ForegroundColor $color
 ```
 
+Data-Types:
+
+- `[int]`
+- `[long]`
+- `[string]`
+- `[char]`
+- `[byte]`
+- `[bool]`
+- `[decimal]`
+- `[double]`
+- `[xml]`
+- `[array]`
+- `[hashtable]`
+
 ## Array
 
 ```powershell
 $array = @("hello","world")
+$processes = @(Get-Process)
 
 foreach ($item in $array) {
   New-Item -Type File -Name ($item + ".txt")
@@ -579,6 +587,7 @@ dir -?
 | `Get-Service`        | get all services           |
 | `Test-Connection`    | ping a computer            |
 | `Test-NetConnection` | ping using a specific port |
+| `Test-Path`          | test if item exists        |
 | `Invoke-Item`        | open file with default app |
 | `Invoke-WebRequest`  | get & post content to url  |
 | `Start-Sleep`        | pause script               |
@@ -628,6 +637,108 @@ New-Item -Path "file" + $_.Extension
 # solution:
 New-Item -Path ("file" + $_.Extension)
 ```
+
+# Script Development
+
+## Preparation
+
+In order to run scripts on your machine, you have to enable 
+
+```powershell
+Get-ExecutionPolicy -List
+
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+# alternatively:
+powershell.exe -ExecutionPolicy Bypass -File ./my-script.ps1
+```
+
+## Visual Studio Code Setup
+
+VS Code recommendations for PowerShell:
+
+File: `.vscode/settings.json`
+```jsonc
+{"gitdown": "include", "file": "./../.vscode/settings.json"}
+```
+
+File: `.vscode/launch.json`
+```jsonc
+{"gitdown": "include", "file": "./../.vscode/launch.json"}
+```
+
+## Profiles
+
+The profile file get's executed every time PS is started.
+
+```powershell
+$PROFILE | Select-Object -Property *
+```
+
+:arrow_right: CurrentHost: only for `$Host` (e.g. only PS ConsoleHost)  
+:arrow_right: AllHosts: (e.g. PS ConsoleHost & PS ISE & VS Package Manager Console)
+
+### Customize Prompt
+
+:arrow_right: `about_Prompts`
+
+```powershell
+function Prompt { <function_body> }
+```
+
+## Basics
+
+```powershell
+# get all variables
+Get-ChildItem Variable:
+
+# Exit-Codes:
+exit 1;
+$? # => 1
+
+# Exceptions:
+throw "Can't do this ;)"
+$Error[0] # => Exception: Can't do this ;)
+
+# User Home:
+$HOME
+```
+
+:arrow_right: [Variables](#variables)  
+:arrow_right: [Array](#array)
+
+Example:
+
+```powershell
+$ErrorActionPreference = "Stop";
+$RandomNumber = Get-Random -Minimum 0 -Maximum 10;
+
+do {
+  $Input = Read-Host -Prompt "Enter Number";
+} while ($Input -ne $RandomNumber);
+
+Write-Host "You guessed it 🥳 The number is $RandomNumber" -ForegroundColor Green;
+```
+
+## Try Catch
+
+```powershell
+$ErrorActionPreference = "Stop";
+
+try {
+  Get-ChildItem C:\nonExistingFolder
+} catch [Exception] {
+  Write-Host "caught"
+}
+```
+
+## Function
+
+```powershell
+function <function_name> {
+  <function_body>
+}
+```
+
 
 # Script Template
 

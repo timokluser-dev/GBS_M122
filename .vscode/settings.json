@@ -1,15 +1,41 @@
 {
+    "files.insertFinalNewline": true,
     "pasteImage.path": "${currentFileDir}/files",
     "pasteImage.showFilePathConfirmInputBox": true,
+
+    //#region PowerShell & Linter
+    "powershell.codeFolding.enable": true,
+    "powershell.codeFolding.showLastLine": true,
+    "powershell.codeFormatting.addWhitespaceAroundPipe": true,
+    "powershell.codeFormatting.alignPropertyValuePairs": true,
     "powershell.codeFormatting.autoCorrectAliases": true,
     "powershell.codeFormatting.ignoreOneLineBlock": false,
-    "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationAfterEveryPipeline",
+    "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
     "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
     "powershell.codeFormatting.useConstantStrings": true,
     "powershell.codeFormatting.useCorrectCasing": true,
     "powershell.codeFormatting.whitespaceBetweenParameters": true,
+    "powershell.codeFormatting.newLineAfterCloseBrace": true,
+    "powershell.codeFormatting.newLineAfterOpenBrace": true,
+    "powershell.codeFormatting.openBraceOnSameLine": true,
+    // @see: https://github.com/PoshCode/PowerShellPracticeAndStyle/issues/81
+    "powershell.codeFormatting.preset": "OTBS",
+    "powershell.codeFormatting.whitespaceAfterSeparator": true,
+    "powershell.codeFormatting.whitespaceAroundOperator": true,
+    "powershell.codeFormatting.whitespaceBeforeOpenBrace": true,
+    "powershell.codeFormatting.whitespaceBeforeOpenParen": true,
+    "powershell.codeFormatting.whitespaceInsideBrace": true,
+    // when writing modules & classes, else comment out
     "powershell.debugging.createTemporaryIntegratedConsole": true,
+    "powershell.helpCompletion": "BlockComment",
+    "powershell.promptToUpdatePackageManagement": false,
+    "powershell.promptToUpdatePowerShell": false,
+    "powershell.scriptAnalysis.enable": true,
+    "powershell.sideBar.CommandExplorerVisibility": true,
+    "powershell.startAutomatically": true,
+    "powershell.useX86Host": false,
     "powershell.integratedConsole.suppressStartupBanner": true,
+    "powershell.integratedConsole.showOnStartup": true,
     "powershell.powerShellDefaultVersion": "Windows PowerShell (x64)",
-    "files.insertFinalNewline": true
+    //#endregion PowerShell & Linter
 }

@@ -59,6 +59,14 @@
     * [Command Master Table](#powershell-command-master-table)
 * [Writing PS OneLiners](#writing-ps-oneliners)
     * [Tipps & Tricks](#writing-ps-oneliners-tipps-tricks)
+* [Script Development](#script-development)
+    * [Preparation](#script-development-preparation)
+    * [Visual Studio Code Setup](#script-development-visual-studio-code-setup)
+    * [Profiles](#script-development-profiles)
+        * [Customize Prompt](#script-development-profiles-customize-prompt)
+    * [Basics](#script-development-basics)
+    * [Try Catch](#script-development-try-catch)
+    * [Function](#script-development-function)
 * [Script Template](#script-template)
 
 
@@ -180,18 +188,6 @@ Get-Process "powershell"
 
 > 💡 Set any Common Parameter using the `$<CommonParameter>Preference` variable
 
-Example:
-
-```powershell
-$ErrorActionPreference = "Stop";
-
-try {
-    Get-ChildItem C:\nonExistingFolder
-} catch [Exception] {
-    Write-Host "caught"
-}
-```
-
 <a name="powershell-syntax-whatif"></a>
 ### <code>-WhatIf</code>
 
@@ -243,6 +239,9 @@ PowerShell supports the following logical operators.
 |          | that follows.                      | `False`                    |
 | `!`      | Same as `-not`                     | `!(1 -eq 1)`               |
 |          |                                    | `False`                    |
+
+**Case-Sentitive:** Prefix `-c` (e.g. `$_.ProcessName -cmatch "^W"`)  
+**Case-Insensitive:** Prefix `-i` (e.g. `$_.ProcessName -imatch "^W"`)  
 
 Source: https://github.com/MicrosoftDocs/PowerShell-Docs/blob/staging/reference/7.1/Microsoft.PowerShell.Core/About/about_Logical_Operators.md?plain=1#L28
 
@@ -442,6 +441,8 @@ Get-Content -Path "c:\Windows\log.txt" | Select-String -Pattern ".*succeeded.*"
 $variable = "hello world"
 # explicit:
 [string] $str = "hello world"
+# unset:
+$str = $null
 
 # variable in parameter:
 # -> `Get-Help <Cmdlet> -Full` to see types of parameters
@@ -449,11 +450,26 @@ $color = [System.ConsoleColor]::Green
 Write-Host "hello world" -ForegroundColor $color
 ```
 
+Data-Types:
+
+- `[int]`
+- `[long]`
+- `[string]`
+- `[char]`
+- `[byte]`
+- `[bool]`
+- `[decimal]`
+- `[double]`
+- `[xml]`
+- `[array]`
+- `[hashtable]`
+
 <a name="powershell-array"></a>
 ## Array
 
 ```powershell
 $array = @("hello","world")
+$processes = @(Get-Process)
 
 foreach ($item in $array) {
   New-Item -Type File -Name ($item + ".txt")
@@ -676,6 +692,7 @@ dir -?
 | `Get-Service`        | get all services           |
 | `Test-Connection`    | ping a computer            |
 | `Test-NetConnection` | ping using a specific port |
+| `Test-Path`          | test if item exists        |
 | `Invoke-Item`        | open file with default app |
 | `Invoke-WebRequest`  | get & post content to url  |
 | `Start-Sleep`        | pause script               |
@@ -727,6 +744,172 @@ New-Item -Path "file" + $_.Extension
 # solution:
 New-Item -Path ("file" + $_.Extension)
 ```
+
+<a name="script-development"></a>
+# Script Development
+
+<a name="script-development-preparation"></a>
+## Preparation
+
+In order to run scripts on your machine, you have to enable 
+
+```powershell
+Get-ExecutionPolicy -List
+
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+# alternatively:
+powershell.exe -ExecutionPolicy Bypass -File ./my-script.ps1
+```
+
+<a name="script-development-visual-studio-code-setup"></a>
+## Visual Studio Code Setup
+
+VS Code recommendations for PowerShell:
+
+File: `.vscode/settings.json`
+```jsonc
+{
+    "files.insertFinalNewline": true,
+    "pasteImage.path": "${currentFileDir}/files",
+    "pasteImage.showFilePathConfirmInputBox": true,
+
+    //#region PowerShell & Linter
+    "powershell.codeFolding.enable": true,
+    "powershell.codeFolding.showLastLine": true,
+    "powershell.codeFormatting.addWhitespaceAroundPipe": true,
+    "powershell.codeFormatting.alignPropertyValuePairs": true,
+    "powershell.codeFormatting.autoCorrectAliases": true,
+    "powershell.codeFormatting.ignoreOneLineBlock": false,
+    "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
+    "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+    "powershell.codeFormatting.useConstantStrings": true,
+    "powershell.codeFormatting.useCorrectCasing": true,
+    "powershell.codeFormatting.whitespaceBetweenParameters": true,
+    "powershell.codeFormatting.newLineAfterCloseBrace": true,
+    "powershell.codeFormatting.newLineAfterOpenBrace": true,
+    "powershell.codeFormatting.openBraceOnSameLine": true,
+    // @see: https://github.com/PoshCode/PowerShellPracticeAndStyle/issues/81
+    "powershell.codeFormatting.preset": "OTBS",
+    "powershell.codeFormatting.whitespaceAfterSeparator": true,
+    "powershell.codeFormatting.whitespaceAroundOperator": true,
+    "powershell.codeFormatting.whitespaceBeforeOpenBrace": true,
+    "powershell.codeFormatting.whitespaceBeforeOpenParen": true,
+    "powershell.codeFormatting.whitespaceInsideBrace": true,
+    // when writing modules & classes, else comment out
+    "powershell.debugging.createTemporaryIntegratedConsole": true,
+    "powershell.helpCompletion": "BlockComment",
+    "powershell.promptToUpdatePackageManagement": false,
+    "powershell.promptToUpdatePowerShell": false,
+    "powershell.scriptAnalysis.enable": true,
+    "powershell.sideBar.CommandExplorerVisibility": true,
+    "powershell.startAutomatically": true,
+    "powershell.useX86Host": false,
+    "powershell.integratedConsole.suppressStartupBanner": true,
+    "powershell.integratedConsole.showOnStartup": true,
+    "powershell.powerShellDefaultVersion": "Windows PowerShell (x64)",
+    //#endregion PowerShell & Linter
+}
+
+```
+
+File: `.vscode/launch.json`
+```jsonc
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "PowerShell: Launch Current File",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${file}",
+            "cwd": "${file}"
+        }
+    ]
+}
+
+```
+
+<a name="script-development-profiles"></a>
+## Profiles
+
+The profile file get's executed every time PS is started.
+
+```powershell
+$PROFILE | Select-Object -Property *
+```
+
+:arrow_right: CurrentHost: only for `$Host` (e.g. only PS ConsoleHost)  
+:arrow_right: AllHosts: (e.g. PS ConsoleHost & PS ISE & VS Package Manager Console)
+
+<a name="script-development-profiles-customize-prompt"></a>
+### Customize Prompt
+
+:arrow_right: `about_Prompts`
+
+```powershell
+function Prompt { <function_body> }
+```
+
+<a name="script-development-basics"></a>
+## Basics
+
+```powershell
+# get all variables
+Get-ChildItem Variable:
+
+# Exit-Codes:
+exit 1;
+$? # => 1
+
+# Exceptions:
+throw "Can't do this ;)"
+$Error[0] # => Exception: Can't do this ;)
+
+# User Home:
+$HOME
+```
+
+:arrow_right: [Variables](#variables)  
+:arrow_right: [Array](#array)
+
+Example:
+
+```powershell
+$ErrorActionPreference = "Stop";
+$RandomNumber = Get-Random -Minimum 0 -Maximum 10;
+
+do {
+  $Input = Read-Host -Prompt "Enter Number";
+} while ($Input -ne $RandomNumber);
+
+Write-Host "You guessed it 🥳 The number is $RandomNumber" -ForegroundColor Green;
+```
+
+<a name="script-development-try-catch"></a>
+## Try Catch
+
+```powershell
+$ErrorActionPreference = "Stop";
+
+try {
+  Get-ChildItem C:\nonExistingFolder
+} catch [Exception] {
+  Write-Host "caught"
+}
+```
+
+<a name="script-development-function"></a>
+## Function
+
+```powershell
+function <function_name> {
+  <function_body>
+}
+```
+
 
 <a name="script-template"></a>
 # Script Template
