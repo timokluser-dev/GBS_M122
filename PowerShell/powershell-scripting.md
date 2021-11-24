@@ -733,12 +733,75 @@ try {
 
 ## Function
 
+:arrow_right: `about_Functions`  
+:arrow_right: `about_Functions_Advanced_Parameters`  
+
 ```powershell
-function <function_name> {
-  <function_body>
+# verb: according to `Get-Verb`
+function Verb-Noun {
+    # do stuff
+}
+
+function Test-Function {
+    param (
+        [Parameter(Mandatory)]
+        [string]$Text,
+        [bool]$Force = $false
+    )
+  
+    Write-Host "Text: $Text"
+    Write-Host "Force: $Force"
 }
 ```
 
+## Integrations
+
+### Prepare Script
+
+- Set proper **Exit-Codes** in the code
+  - _Exit-Codes will be visible in the Task Scheduler_
+  - Success: `exit 0`
+  - Error: `exit 1`
+- In PROD Mode: do not pause script :exclamation:
+
+### Task Scheduler
+
+1. Start "Computer Management"
+2. Select "Task Scheduler"
+3. [Create a new task folder]
+    - "New Folder" in Task Scheduler Library
+4. "Create New Task..."
+    - Add Trigger
+    - Add Action
+      - Program: `powershell.exe`
+      - Arguments: `-File "c:\Windows\Automation\script.ps1" -ExecutionPolicy Bypass`
+5. Enable Task History
+    - "Enable All Tasks History" in Folder Properties
+6. Run the task & check
+    - Have a look at: 
+      - Exit-Code
+      - History
+
+:bug: Debugging & Testing: `Read-Host`
+
+#### The PowerShell Way
+
+Module: `ScheduledTasks`
+
+```powershell
+Get-Command -Module ScheduledTasks
+```
+
+How To:
+
+```powershell
+$Action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument '-File "C:\MyScript.ps1" -ExecutionPolicy Bypass'
+$Trigger = New-ScheduledTaskTrigger -Once -At 3am
+$Settings = New-ScheduledTaskSettingsSet
+$Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Settings $Settings
+
+Register-ScheduledTask -TaskName 'My PowerShell Script' -TaskPath "PS_TEST" -InputObject $Task [-User 'User' -Password 'Password']
+```
 
 # Script Template
 

@@ -59,7 +59,7 @@ function Test-IsAdministrator {
 }
 
 function Test-IsWindowsPowershell {
-    return ($PSVersionTable.PSEdition -eq "Desktop");
+    return ($PSVersionTable.PSEdition -eq 'Desktop');
 }
 
 #endregion Functions

@@ -3,4 +3,5 @@
 
 npm run docs
 
-git add .
+# only add all re-rendered md files
+git add "*_dist.md"
