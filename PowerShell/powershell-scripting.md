@@ -744,15 +744,40 @@ function Verb-Noun {
 
 function Test-Function {
     param (
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory=$true)]
         [string]$Text,
-        [bool]$Force = $false
+        [Parameter()]
+        [string[]]$Actions = @("nothing"),
+        # switch param
+        [Parameter()]
+        [switch]$Force, # $true when provided
+        # positional param
+        [Parameter(Position=0, Mandatory=$true)]
+        [int]$Position
     )
   
+    Write-Host "Position: $Position"
     Write-Host "Text: $Text"
+    Write-Host "Actions: $Actions"
     Write-Host "Force: $Force"
 }
+
+Test-Function 1 -Text "hello world" -Force
+Test-Function 2 -Text "hello world" -Actions @("shutdown", "restart") -Force
 ```
+
+## Script Parameters
+
+On the top of the script:
+```powershell
+[CmdletBinding()]
+param (
+    [Parameter()]
+    [string]$ParameterName
+)
+```
+
+:arrow_right: same concept as [Function](#Function)
 
 ## Integrations
 
@@ -802,6 +827,21 @@ $Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Settings $Settings
 
 Register-ScheduledTask -TaskName 'My PowerShell Script' -TaskPath "PS_TEST" -InputObject $Task [-User 'User' -Password 'Password']
 ```
+
+## Documentation
+
+:arrow_right: using block comments
+
+:arrow_right: in VSCode type `##` - (below function header or on top of script)
+
+## Testing
+  
+- `White-Box Test`: Debugger, line by line
+- `Black-Box Test`: Unit Tests (asserts)
+- `Component Test`: Test only one component
+- `Integration Test`: Test integration of one component with the whole architecture 
+
+:arrow_right: Writing test cases: _Dossier DW122 S. 10_
 
 # Script Template
 
