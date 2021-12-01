@@ -67,10 +67,13 @@
     * [Basics](#script-development-basics)
     * [Try Catch](#script-development-try-catch)
     * [Function](#script-development-function)
+    * [Script Parameters](#script-development-script-parameters)
     * [Integrations](#script-development-integrations)
         * [Prepare Script](#script-development-integrations-prepare-script)
         * [Task Scheduler](#script-development-integrations-task-scheduler)
             * [The PowerShell Way](#script-development-integrations-task-scheduler-the-powershell-way)
+    * [Documentation](#script-development-documentation)
+    * [Testing](#script-development-testing)
 * [Script Template](#script-template)
 
 
@@ -799,7 +802,7 @@ File: `.vscode/settings.json`
     "powershell.codeFormatting.whitespaceBeforeOpenBrace": true,
     "powershell.codeFormatting.whitespaceBeforeOpenParen": true,
     "powershell.codeFormatting.whitespaceInsideBrace": true,
-    // when writing modules & classes, else comment out
+    // when writing modules & classes, else comment out ↓↓↓
     "powershell.debugging.createTemporaryIntegratedConsole": true,
     "powershell.helpCompletion": "BlockComment",
     "powershell.promptToUpdatePackageManagement": false,
@@ -919,15 +922,41 @@ function Verb-Noun {
 
 function Test-Function {
     param (
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory=$true)]
         [string]$Text,
-        [bool]$Force = $false
+        [Parameter()]
+        [string[]]$Actions = @("nothing"),
+        # switch param
+        [Parameter()]
+        [switch]$Force, # $true when provided
+        # positional param
+        [Parameter(Position=0, Mandatory=$true)]
+        [int]$Position
     )
   
+    Write-Host "Position: $Position"
     Write-Host "Text: $Text"
+    Write-Host "Actions: $Actions"
     Write-Host "Force: $Force"
 }
+
+Test-Function 1 -Text "hello world" -Force
+Test-Function 2 -Text "hello world" -Actions @("shutdown", "restart") -Force
 ```
+
+<a name="script-development-script-parameters"></a>
+## Script Parameters
+
+On the top of the script:
+```powershell
+[CmdletBinding()]
+param (
+    [Parameter()]
+    [string]$ParameterName
+)
+```
+
+:arrow_right: same concept as [Function](#Function)
 
 <a name="script-development-integrations"></a>
 ## Integrations
@@ -981,6 +1010,23 @@ $Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Settings $Settings
 
 Register-ScheduledTask -TaskName 'My PowerShell Script' -TaskPath "PS_TEST" -InputObject $Task [-User 'User' -Password 'Password']
 ```
+
+<a name="script-development-documentation"></a>
+## Documentation
+
+:arrow_right: using block comments
+
+:arrow_right: in VSCode type `##` - (below function header or on top of script)
+
+<a name="script-development-testing"></a>
+## Testing
+  
+- `White-Box Test`: Debugger, line by line
+- `Black-Box Test`: Unit Tests (asserts)
+- `Component Test`: Test only one component
+- `Integration Test`: Test integration of one component with the whole architecture 
+
+:arrow_right: Writing test cases: _Dossier DW122 S. 10_
 
 <a name="script-template"></a>
 # Script Template

@@ -25,7 +25,7 @@
     "powershell.codeFormatting.whitespaceBeforeOpenBrace": true,
     "powershell.codeFormatting.whitespaceBeforeOpenParen": true,
     "powershell.codeFormatting.whitespaceInsideBrace": true,
-    // when writing modules & classes, else comment out
+    // when writing modules & classes, else comment out ↓↓↓
     "powershell.debugging.createTemporaryIntegratedConsole": true,
     "powershell.helpCompletion": "BlockComment",
     "powershell.promptToUpdatePackageManagement": false,
