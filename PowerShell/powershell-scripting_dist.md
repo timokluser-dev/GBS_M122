@@ -41,6 +41,9 @@
     * [Regex](#powershell-regex)
     * [Variables](#powershell-variables)
     * [Array](#powershell-array)
+    * [Services](#powershell-services)
+    * [Processes](#powershell-processes)
+    * [Event Logs](#powershell-event-logs)
     * [SecureString - Credential Mgmt](#powershell-securestring-credential-mgmt)
         * [Create SecureString](#powershell-securestring-credential-mgmt-create-securestring)
         * [PSCredentials](#powershell-securestring-credential-mgmt-pscredentials)
@@ -74,6 +77,8 @@
             * [The PowerShell Way](#script-development-integrations-task-scheduler-the-powershell-way)
     * [Documentation](#script-development-documentation)
     * [Testing](#script-development-testing)
+    * [Code Snippets](#script-development-code-snippets)
+        * [1. Menu](#script-development-code-snippets-menu)
 * [Script Template](#script-template)
 
 
@@ -424,6 +429,12 @@ Get-Content -Path .\data.json | ConvertFrom-Json
 Get-Content -Path .\data.csv | ConvertFrom-Csv -Delimiter "`t"
 ```
 
+Special Case `Xml`:
+
+```powershell
+[xml]$data = Get-Content -Path './data.xml'
+```
+
 <a name="powershell-enum"></a>
 ## Enum
 
@@ -481,6 +492,33 @@ $processes = @(Get-Process)
 foreach ($item in $array) {
   New-Item -Type File -Name ($item + ".txt")
 }
+```
+
+<a name="powershell-services"></a>
+## Services
+
+```powershell
+Get-Service
+Get-Service -Name "WSearch"
+```
+
+<a name="powershell-processes"></a>
+## Processes
+
+```powershell
+Get-Process
+Get-Process -Name "svchost"
+```
+
+<a name="powershell-event-logs"></a>
+## Event Logs
+
+```powershell
+# get all event log types
+Get-EventLog -List
+
+# list events for log type: system
+Get-EventLog -LogName System
 ```
 
 <a name="powershell-securestring-credential-mgmt"></a>
@@ -697,6 +735,7 @@ dir -?
 | `Get-Module`         | show local PS modules      |
 | `Get-Process`        | get all processes          |
 | `Get-Service`        | get all services           |
+| `Get-EventLog`       | get all event logs         |
 | `Test-Connection`    | ping a computer            |
 | `Test-NetConnection` | ping using a specific port |
 | `Test-Path`          | test if item exists        |
@@ -1027,6 +1066,53 @@ Register-ScheduledTask -TaskName 'My PowerShell Script' -TaskPath "PS_TEST" -Inp
 - `Integration Test`: Test integration of one component with the whole architecture 
 
 :arrow_right: Writing test cases: _Dossier DW122 S. 10_
+
+<a name="script-development-code-snippets"></a>
+## Code Snippets
+
+<a name="script-development-code-snippets-menu"></a>
+### >
+<li>Menu</li>
+<
+
+```powershell
+# Skript PCDatenAnzeigen.ps1
+
+Write-Host '*** Willkommen beim Anzeigen von Informationen ***'
+
+Do {
+    Write-Host "`n[1] Aktueller Benutzername"
+    Write-Host '[2] Grösse der Festplatte in GByte mit belegtem und freiem Platz'
+    Write-Host '[3] Daten der Netzwerkkarten mit IP-Adresse'
+    Write-Host '[0] Menü verlassen'
+    $auswahl = Read-Host
+
+    switch ($auswahl) {
+        0 {
+            Write-Host 'Das Programm wird beendet.'
+        }
+        1 {
+            Write-Host "Der Benutzername lautet '$env:username'."
+        }
+        2 {
+            $disk = Get-PSDrive C
+            # kein Abstand zwischen 1 und gb: 
+            $frei = $disk.free / 1gb
+            $belegt = $disk.Used / 1gb
+            # Alternative: $belegt = Get-PSDrive -Name C | ForEach-Object -Process { ($_.Used / 1gb) }
+            $groesse = $belegt + $frei
+            Write-Host "Die Festplatte 'C:\' ist $groesse GBytes gross, hat $belegt GBytes belegt und $frei GBytes freien Platz."
+        }
+        3 {
+            Get-NetIPAddress | Format-Table
+            
+        }
+        Default {
+            Write-Host 'Geben Sie einen zulässigen Wert ein.'
+        }
+    }
+} while ($auswahl -ne 0)
+```
 
 <a name="script-template"></a>
 # Script Template
