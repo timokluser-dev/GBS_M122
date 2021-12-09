@@ -417,6 +417,16 @@ Get-EventLog -List
 Get-EventLog -LogName System
 ```
 
+## Convert File Size
+
+```powershell
+$SpaceFree = (Get-PSDrive -Name "C").Free
+
+Write-Host "Space Free in MB: $($SpaceFree / 1mb)mb"
+Write-Host "Space Free in GB: $($SpaceFree / 1gb)gb"
+Write-Host "Space Free in TB: $($SpaceFree / 1tb)tb"
+```
+
 ## SecureString - Credential Mgmt
 
 SecretStrings in PS can be used to store user passwords or so.  

@@ -44,6 +44,7 @@
     * [Services](#powershell-services)
     * [Processes](#powershell-processes)
     * [Event Logs](#powershell-event-logs)
+    * [Convert File Size](#powershell-convert-file-size)
     * [SecureString - Credential Mgmt](#powershell-securestring-credential-mgmt)
         * [Create SecureString](#powershell-securestring-credential-mgmt-create-securestring)
         * [PSCredentials](#powershell-securestring-credential-mgmt-pscredentials)
@@ -519,6 +520,17 @@ Get-EventLog -List
 
 # list events for log type: system
 Get-EventLog -LogName System
+```
+
+<a name="powershell-convert-file-size"></a>
+## Convert File Size
+
+```powershell
+$SpaceFree = (Get-PSDrive -Name "C").Free
+
+Write-Host "Space Free in MB: $($SpaceFree / 1mb)mb"
+Write-Host "Space Free in GB: $($SpaceFree / 1gb)gb"
+Write-Host "Space Free in TB: $($SpaceFree / 1tb)tb"
 ```
 
 <a name="powershell-securestring-credential-mgmt"></a>
