@@ -1327,12 +1327,12 @@ Write-Host
 
 # 2)
 Write-Host 'Count Suppliers:'
-$data.db.Artikel | Group-Object -Property 'Lieferanten-Nr' | Measure-Object | Select-Object -Property Count
+$data.db.Artikel | Group-Object -Property 'Lieferanten-Nr' | Measure-Object | Select-Object -Property Count | Format-Table
 Write-Host
 
 # 3)
 Write-Host 'Categories:'
-$data.db.Artikel | Group-Object -Property 'Kategorie-Nr' | Select-Object -Property Count, Name
+$data.db.Artikel | Group-Object -Property 'Kategorie-Nr' | Select-Object -Property Count, Name | Format-Table
 Write-Host
 
 # 4)
@@ -1352,12 +1352,12 @@ Write-Host
 Write-Host 'Sum Price in Category:'
 # important: Select-Object PropOne, @{N='PropTwo';E={ 1 }}
 $CategoriesPriceSum = $data.db.Artikel | Group-Object -Property 'Kategorie-Nr' | Select-Object Name, @{N = 'SumOfCategorie'; E = { ($_.Group | Measure-Object -Property 'Einzelpreis' -Sum).Sum } }
-$CategoriesPriceSum
+$CategoriesPriceSum | Format-Table
 Write-Host
 
 # 7)
 Write-Host 'Category with smallest Sum:'
-$CategoriesPriceSum | Sort-Object -Property SumOfCategorie | Select-Object -First 1
+$CategoriesPriceSum | Sort-Object -Property SumOfCategorie | Select-Object -First 1 | Format-Table
 
 ```
 
