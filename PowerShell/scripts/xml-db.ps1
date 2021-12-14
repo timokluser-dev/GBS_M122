@@ -46,6 +46,7 @@ $data.db.Artikel | Group-Object -Property 'Kategorie-Nr' | Select-Object -Proper
 Write-Host
 
 # 4)
+# important: -imatch
 Write-Host 'Search Articles:'
 $SearchString = 'bier'
 $data.db.Artikel | Where-Object { [string]$_.Artikelname -imatch $SearchString } | Format-Table
@@ -53,11 +54,13 @@ Write-Host
 
 # 5)
 Write-Host 'Delivery Units:'
+# important: | Format-Table
 $data.db.Artikel | Group-Object -Property Liefereinheit | Select-Object -Property Name | Format-Table
 Write-Host
 
 # 6)
 Write-Host 'Sum Price in Category:'
+# important: Select-Object PropOne, @{N='PropTwo';E={ 1 }}
 $CategoriesPriceSum = $data.db.Artikel | Group-Object -Property 'Kategorie-Nr' | Select-Object Name, @{N = 'SumOfCategorie'; E = { ($_.Group | Measure-Object -Property 'Einzelpreis' -Sum).Sum } }
 $CategoriesPriceSum
 Write-Host
