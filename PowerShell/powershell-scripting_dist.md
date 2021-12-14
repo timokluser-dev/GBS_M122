@@ -4,8 +4,18 @@
 <a name="powershell-quick-access"></a>
 ## Quick Access
 
+_Exam II_:
+
 :arrow_right: [Writing PS OneLiners](#writing-ps-oneliners)  
-:arrow_right: [Command Master Table](#command-master-table)
+:arrow_right: [Command Master Table](#command-master-table)  
+
+---  
+
+_Exam III_:
+
+:arrow_right: [Code Snippets](#code-snippets)  
+:arrow_right: [Script Development](#script-development)  
+:arrow_right: [Script Template](#script-template)  
 
 ---
 <br>
@@ -71,6 +81,7 @@
     * [Basics](#script-development-basics)
     * [Try Catch](#script-development-try-catch)
     * [Function](#script-development-function)
+        * [Pipeline Params](#script-development-function-pipeline-params)
     * [Script Parameters](#script-development-script-parameters)
     * [Integrations](#script-development-integrations)
         * [Prepare Script](#script-development-integrations-prepare-script)
@@ -79,7 +90,9 @@
     * [Documentation](#script-development-documentation)
     * [Testing](#script-development-testing)
     * [Code Snippets](#script-development-code-snippets)
-        * [1. Menu](#script-development-code-snippets-menu)
+        * [1\. Menu](#script-development-code-snippets-menu)
+        * [2\. Event Logs](#script-development-code-snippets-event-logs-1)
+        * [3\. XML DB](#script-development-code-snippets-xml-db)
 * [Script Template](#script-template)
 
 
@@ -253,9 +266,6 @@ PowerShell supports the following logical operators.
 | `!`      | Same as `-not`                     | `!(1 -eq 1)`               |
 |          |                                    | `False`                    |
 
-**Case-Sentitive:** Prefix `-c` (e.g. `$_.ProcessName -cmatch "^W"`)  
-**Case-Insensitive:** Prefix `-i` (e.g. `$_.ProcessName -imatch "^W"`)  
-
 Source: https://github.com/MicrosoftDocs/PowerShell-Docs/blob/staging/reference/7.1/Microsoft.PowerShell.Core/About/about_Logical_Operators.md?plain=1#L28
 
 <a name="powershell-comparison-operators"></a>
@@ -283,6 +293,9 @@ specified patterns. PowerShell includes the following comparison operators:
 |             | `-notin`       | value is not in a collection              |
 | Type        | `-is`          | both objects are the same type            |
 |             | `-isnot`       | the objects are not the same type         |
+
+**Case-Sentitive:** Prefix `-c` (e.g. `$_.ProcessName -cmatch "^W"`)  
+**Case-Insensitive:** Prefix `-i` (e.g. `$_.ProcessName -imatch "^W"`)  
 
 Source: https://github.com/MicrosoftDocs/PowerShell-Docs/blob/staging/reference/7.1/Microsoft.PowerShell.Core/About/about_Comparison_Operators.md?plain=1#L18
 
@@ -995,6 +1008,35 @@ Test-Function 1 -Text "hello world" -Force
 Test-Function 2 -Text "hello world" -Actions @("shutdown", "restart") -Force
 ```
 
+<a name="script-development-function-pipeline-params"></a>
+### Pipeline Params
+
+Only single object can be passed as pipeline.
+
+```powershell
+# Get-ChildItem -Path ./README.md | Test-PipelineObject
+# Output: `README.md_staff`
+function Test-PipelineObject {
+    param(
+        [Parameter(Mandatory=$true, ValueFromPipeline)]
+        $Object
+    )
+
+    Write-Host "$($Object.Name)_$($Object.Group)"
+}
+
+# Get-ChildItem -Path ./README.md | Test-PipelineSingleProperty
+# Output: `170`
+function Test-PipelineSingleProperty {
+    param(
+        [Parameter(Mandatory=$true, ValueFromPipelineByPropertyName)]
+        $Size
+    )
+    
+    Write-Host $Size
+}
+```
+
 <a name="script-development-script-parameters"></a>
 ## Script Parameters
 
@@ -1067,7 +1109,59 @@ Register-ScheduledTask -TaskName 'My PowerShell Script' -TaskPath "PS_TEST" -Inp
 
 :arrow_right: using block comments
 
-:arrow_right: in VSCode type `##` - (below function header or on top of script)
+:arrow_right: in VSCode type `##` - (**below** function header & inside of function)
+
+:arrow_right: in VSCode type `comment-help` (on top of script)
+
+
+```powershell
+<#
+.SYNOPSIS
+    Get PC Data
+.DESCRIPTION
+    Get informations about your PC:
+    - username
+    - disk size
+    - network interfaces
+.EXAMPLE
+    PS C:\> ./pc-data.ps1
+    Will run the script
+.INPUTS
+    None
+.OUTPUTS
+    None
+.NOTES
+    An interactive CLI
+.LINK
+    Get-PSDrive
+    Get-NetIPAddress
+#>
+
+function Test-Function {
+    <#
+    .SYNOPSIS
+    Short description
+    
+    .DESCRIPTION
+    Long description
+    
+    .PARAMETER ComputerName
+    Parameter description
+    
+    .EXAMPLE
+    An example
+    
+    .NOTES
+    General notes
+    #>
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$ComputerName
+    )
+    
+    Write-Host $ComputerName
+}
+```
 
 <a name="script-development-testing"></a>
 ## Testing
@@ -1083,47 +1177,185 @@ Register-ScheduledTask -TaskName 'My PowerShell Script' -TaskPath "PS_TEST" -Inp
 ## Code Snippets
 
 <a name="script-development-code-snippets-menu"></a>
-### >
-<li>Menu</li>
-<
+### 1. Menu
 
 ```powershell
-# Skript PCDatenAnzeigen.ps1
+<#
+.SYNOPSIS
+    Get PC Data
+.DESCRIPTION
+    Get informations about your PC:
+    - username
+    - disk size
+    - network interfaces
+.EXAMPLE
+    PS C:\> ./pc-data.ps1
+    Will run the script
+.INPUTS
+    None
+.OUTPUTS
+    None
+.NOTES
+    An interactive CLI
+.LINK
+    Get-PSDrive
+    Get-NetIPAddress
+#>
+
+$ErrorActionPreference = 'Stop'
 
 Write-Host '*** Willkommen beim Anzeigen von Informationen ***'
 
-Do {
-    Write-Host "`n[1] Aktueller Benutzername"
+do {
+
+    Write-Host
+    Write-Host '[1] Aktueller Benutzername'
     Write-Host '[2] Grösse der Festplatte in GByte mit belegtem und freiem Platz'
     Write-Host '[3] Daten der Netzwerkkarten mit IP-Adresse'
     Write-Host '[0] Menü verlassen'
-    $auswahl = Read-Host
 
-    switch ($auswahl) {
-        0 {
+    $Action = Read-Host
+
+    switch ($Action) {
+        0 { 
             Write-Host 'Das Programm wird beendet.'
         }
-        1 {
-            Write-Host "Der Benutzername lautet '$env:username'."
+        1 { 
+            Write-Host "Der Benutzername lautet '$($env:USERNAME)'."
         }
-        2 {
-            $disk = Get-PSDrive C
-            # kein Abstand zwischen 1 und gb: 
-            $frei = $disk.free / 1gb
-            $belegt = $disk.Used / 1gb
-            # Alternative: $belegt = Get-PSDrive -Name C | ForEach-Object -Process { ($_.Used / 1gb) }
-            $groesse = $belegt + $frei
-            Write-Host "Die Festplatte 'C:\' ist $groesse GBytes gross, hat $belegt GBytes belegt und $frei GBytes freien Platz."
+        2 { 
+            $DriveLetter = 'C'
+            $Drive = Get-PSDrive -Name $DriveLetter
+            Write-Host "Die Festplatte 'C:\' ist $(($Drive.Used + $Drive.Free) / 1gb) GBytes gross, hat $($Drive.Used / 1gb) GBytes belegt und $($Drive.Free / 1gb) GBytes freien Platz."
         }
-        3 {
-            Get-NetIPAddress | Format-Table
-            
+        3 { 
+            Get-NetIPAddress | Where-Object -Property IPAddress -Match '.+' | Select-Object -Property ifIndex, IPAddress, PrefixLength, PrefixOrigin
         }
         Default {
-            Write-Host 'Geben Sie einen zulässigen Wert ein.'
+            Write-Host 'Geben Sie einen zulässigen Wert ein.' -ForegroundColor Red
         }
     }
-} while ($auswahl -ne 0)
+
+} while ($Action -ne 0);
+
+```
+
+<a name="script-development-code-snippets-event-logs-1"></a>
+### 2. Event Logs
+
+```powershell
+<#
+.SYNOPSIS
+    Analyze Event Log
+.DESCRIPTION
+    Get the todays 5 recent events from system event logs
+.EXAMPLE
+    PS C:\> ./event-log.ps1
+    Explanation of what the example does
+.INPUTS
+    None
+.OUTPUTS
+    None
+.NOTES
+    is an interactive cli
+#>
+
+$ErrorActionPreference = 'Stop'
+
+do {
+    $DefaultPath = 'C:\M122\event'
+    $OutPath = Read-Host "Where to save the file [$($DefaultPath)]"
+    # take default
+    if ($OutPath -eq '') {
+        $OutPath = $DefaultPath
+        New-Item -ItemType Directory -Path $DefaultPath -Force | Out-Null 
+    }
+} while (!(Test-Path -Path $OutPath -PathType Container)); # check for folder (container)
+
+$FilePath = ($OutPath + '/' + 'eventoutput.html')
+
+Get-EventLog -LogName System | `
+        Where-Object { $_.TimeGenerated -ge [DateTime]::Today } | `
+        Sort-Object -Property TimeGenerated | `
+        Select-Object -Property TimeGenerated, Index, Message -First 5 | `
+        ConvertTo-Html -As Table -Title 'Events' | Out-File -PSPath $FilePath -Force
+ 
+Invoke-Item -Path $FilePath
+
+```
+
+<a name="script-development-code-snippets-xml-db"></a>
+### 3. XML DB
+
+```powershell
+<#
+.SYNOPSIS
+    XML Db analyzer
+.DESCRIPTION
+    Analyse the nordwind products db using powershell
+.EXAMPLE
+    PS C:\> ./xml-db.ps1
+    Run the analyzer
+.INPUTS
+    None
+.OUTPUTS
+    None
+.NOTES
+    has no user input
+.LINK
+    Select-Object
+    Group-Object
+    Sort-Object
+#>
+
+$ErrorActionPreference = 'Stop'
+
+try {
+    [xml]$data = Get-Content -Path .\data\Nordwind_Artikel.xml
+} catch [Exception] {
+    Write-Host 'ERROR: could not load xml. check file & format!'
+    exit 1
+}
+
+# IMPORTANT: Format-Table
+
+# 1)
+# important: [int]
+Write-Host 'Most In Stock:'
+$data.db.Artikel | Sort-Object { [int]$_.Lagerbestand } | Select-Object -Last 1 | Format-Table
+Write-Host
+
+# 2)
+Write-Host 'Count Suppliers:'
+$data.db.Artikel | Group-Object -Property 'Lieferanten-Nr' | Measure-Object | Select-Object -Property Count
+Write-Host
+
+# 3)
+Write-Host 'Categories:'
+$data.db.Artikel | Group-Object -Property 'Kategorie-Nr' | Select-Object -Property Count, Name
+Write-Host
+
+# 4)
+Write-Host 'Search Articles:'
+$SearchString = 'bier'
+$data.db.Artikel | Where-Object { [string]$_.Artikelname -imatch $SearchString } | Format-Table
+Write-Host
+
+# 5)
+Write-Host 'Delivery Units:'
+$data.db.Artikel | Group-Object -Property Liefereinheit | Select-Object -Property Name | Format-Table
+Write-Host
+
+# 6)
+Write-Host 'Sum Price in Category:'
+$CategoriesPriceSum = $data.db.Artikel | Group-Object -Property 'Kategorie-Nr' | Select-Object Name, @{N = 'SumOfCategorie'; E = { ($_.Group | Measure-Object -Property 'Einzelpreis' -Sum).Sum } }
+$CategoriesPriceSum
+Write-Host
+
+# 7)
+Write-Host 'Category with smallest Sum:'
+$CategoriesPriceSum | Sort-Object -Property SumOfCategorie | Select-Object -First 1
+
 ```
 
 <a name="script-template"></a>

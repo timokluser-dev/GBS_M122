@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<db Tabelle="Artikel" Typ="Access">
+<Artikel>
+<Artikel-Nr>1</Artikel-Nr>
+<Artikelname>Chai</Artikelname>
+<Lieferanten-Nr>1</Lieferanten-Nr>
+<Kategorie-Nr>1</Kategorie-Nr>
+<Liefereinheit>10 Kartons x 20 Beutel</Liefereinheit>
+<Einzelpreis>18</Einzelpreis>
+<Lagerbestand>39</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>10</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>2</Artikel-Nr>
+<Artikelname>Chang</Artikelname>
+<Lieferanten-Nr>1</Lieferanten-Nr>
+<Kategorie-Nr>1</Kategorie-Nr>
+<Liefereinheit>24 x 12-oz-Flaschen</Liefereinheit>
+<Einzelpreis>19</Einzelpreis>
+<Lagerbestand>17</Lagerbestand>
+<BestellteEinheiten>40</BestellteEinheiten>
+<Mindestbestand>25</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>3</Artikel-Nr>
+<Artikelname>Aniseed Syrup</Artikelname>
+<Lieferanten-Nr>1</Lieferanten-Nr>
+<Kategorie-Nr>2</Kategorie-Nr>
+<Liefereinheit>12 x 550-ml-Flaschen</Liefereinheit>
+<Einzelpreis>10</Einzelpreis>
+<Lagerbestand>13</Lagerbestand>
+<BestellteEinheiten>70</BestellteEinheiten>
+<Mindestbestand>25</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>4</Artikel-Nr>
+<Artikelname>Chef Anton&apos;s Cajun Seasoning</Artikelname>
+<Lieferanten-Nr>2</Lieferanten-Nr>
+<Kategorie-Nr>2</Kategorie-Nr>
+<Liefereinheit>48 x 6-oz-Gläser</Liefereinheit>
+<Einzelpreis>22</Einzelpreis>
+<Lagerbestand>53</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>5</Artikel-Nr>
+<Artikelname>Chef Anton&apos;s Gumbo Mix</Artikelname>
+<Lieferanten-Nr>2</Lieferanten-Nr>
+<Kategorie-Nr>2</Kategorie-Nr>
+<Liefereinheit>36 Kartons</Liefereinheit>
+<Einzelpreis>21.35</Einzelpreis>
+<Lagerbestand>0</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>1</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>6</Artikel-Nr>
+<Artikelname>Grandma&apos;s Boysenberry Spread</Artikelname>
+<Lieferanten-Nr>3</Lieferanten-Nr>
+<Kategorie-Nr>2</Kategorie-Nr>
+<Liefereinheit>12 x 8-oz-Gläser</Liefereinheit>
+<Einzelpreis>25</Einzelpreis>
+<Lagerbestand>120</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>25</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>7</Artikel-Nr>
+<Artikelname>Uncle Bob&apos;s Organic Dried Pears</Artikelname>
+<Lieferanten-Nr>3</Lieferanten-Nr>
+<Kategorie-Nr>7</Kategorie-Nr>
+<Liefereinheit>12 x 1-lb-Packungen</Liefereinheit>
+<Einzelpreis>30</Einzelpreis>
+<Lagerbestand>15</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>10</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>8</Artikel-Nr>
+<Artikelname>Northwoods Cranberry Sauce</Artikelname>
+<Lieferanten-Nr>3</Lieferanten-Nr>
+<Kategorie-Nr>2</Kategorie-Nr>
+<Liefereinheit>12 x 12-oz-Gläser</Liefereinheit>
+<Einzelpreis>40</Einzelpreis>
+<Lagerbestand>6</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>9</Artikel-Nr>
+<Artikelname>Mishi Kobe Niku</Artikelname>
+<Lieferanten-Nr>4</Lieferanten-Nr>
+<Kategorie-Nr>6</Kategorie-Nr>
+<Liefereinheit>18 x 500-g-Packungen</Liefereinheit>
+<Einzelpreis>97</Einzelpreis>
+<Lagerbestand>29</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>1</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>10</Artikel-Nr>
+<Artikelname>Ikura</Artikelname>
+<Lieferanten-Nr>4</Lieferanten-Nr>
+<Kategorie-Nr>8</Kategorie-Nr>
+<Liefereinheit>12 x 200-ml-Gläser</Liefereinheit>
+<Einzelpreis>31</Einzelpreis>
+<Lagerbestand>31</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>11</Artikel-Nr>
+<Artikelname>Queso Cabrales</Artikelname>
+<Lieferanten-Nr>5</Lieferanten-Nr>
+<Kategorie-Nr>4</Kategorie-Nr>
+<Liefereinheit>1-kg-Paket</Liefereinheit>
+<Einzelpreis>21</Einzelpreis>
+<Lagerbestand>22</Lagerbestand>
+<BestellteEinheiten>30</BestellteEinheiten>
+<Mindestbestand>30</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>12</Artikel-Nr>
+<Artikelname>Queso Manchego La Pastora</Artikelname>
+<Lieferanten-Nr>5</Lieferanten-Nr>
+<Kategorie-Nr>4</Kategorie-Nr>
+<Liefereinheit>10 x 500-g-Packungen</Liefereinheit>
+<Einzelpreis>38</Einzelpreis>
+<Lagerbestand>86</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>13</Artikel-Nr>
+<Artikelname>Konbu</Artikelname>
+<Lieferanten-Nr>6</Lieferanten-Nr>
+<Kategorie-Nr>8</Kategorie-Nr>
+<Liefereinheit>2-kg-Karton</Liefereinheit>
+<Einzelpreis>6</Einzelpreis>
+<Lagerbestand>24</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>5</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>14</Artikel-Nr>
+<Artikelname>Tofu</Artikelname>
+<Lieferanten-Nr>6</Lieferanten-Nr>
+<Kategorie-Nr>7</Kategorie-Nr>
+<Liefereinheit>40 x 100-g-Packungen</Liefereinheit>
+<Einzelpreis>23.25</Einzelpreis>
+<Lagerbestand>35</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>15</Artikel-Nr>
+<Artikelname>Genen Shouyu</Artikelname>
+<Lieferanten-Nr>6</Lieferanten-Nr>
+<Kategorie-Nr>2</Kategorie-Nr>
+<Liefereinheit>24 x 250-ml-Flaschen</Liefereinheit>
+<Einzelpreis>15.5</Einzelpreis>
+<Lagerbestand>39</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>5</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>16</Artikel-Nr>
+<Artikelname>Pavlova</Artikelname>
+<Lieferanten-Nr>7</Lieferanten-Nr>
+<Kategorie-Nr>3</Kategorie-Nr>
+<Liefereinheit>32 x 500-g-Kartons</Liefereinheit>
+<Einzelpreis>17.45</Einzelpreis>
+<Lagerbestand>29</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>10</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>17</Artikel-Nr>
+<Artikelname>Alice Mutton</Artikelname>
+<Lieferanten-Nr>7</Lieferanten-Nr>
+<Kategorie-Nr>6</Kategorie-Nr>
+<Liefereinheit>20 x 1-kg-Dosen</Liefereinheit>
+<Einzelpreis>39</Einzelpreis>
+<Lagerbestand>0</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>1</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>18</Artikel-Nr>
+<Artikelname>Carnarvon Tigers</Artikelname>
+<Lieferanten-Nr>7</Lieferanten-Nr>
+<Kategorie-Nr>8</Kategorie-Nr>
+<Liefereinheit>16-kg-Paket</Liefereinheit>
+<Einzelpreis>62.5</Einzelpreis>
+<Lagerbestand>42</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>19</Artikel-Nr>
+<Artikelname>Teatime Chocolate Biscuits</Artikelname>
+<Lieferanten-Nr>8</Lieferanten-Nr>
+<Kategorie-Nr>3</Kategorie-Nr>
+<Liefereinheit>10 Kartons x 12 Stück</Liefereinheit>
+<Einzelpreis>9.2</Einzelpreis>
+<Lagerbestand>25</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>5</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>20</Artikel-Nr>
+<Artikelname>Sir Rodney&apos;s Marmalade</Artikelname>
+<Lieferanten-Nr>8</Lieferanten-Nr>
+<Kategorie-Nr>3</Kategorie-Nr>
+<Liefereinheit>30 Geschenkkartons</Liefereinheit>
+<Einzelpreis>81</Einzelpreis>
+<Lagerbestand>40</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>21</Artikel-Nr>
+<Artikelname>Sir Rodney&apos;s Scones</Artikelname>
+<Lieferanten-Nr>8</Lieferanten-Nr>
+<Kategorie-Nr>3</Kategorie-Nr>
+<Liefereinheit>24 Packungen x 4 Stück</Liefereinheit>
+<Einzelpreis>10</Einzelpreis>
+<Lagerbestand>3</Lagerbestand>
+<BestellteEinheiten>40</BestellteEinheiten>
+<Mindestbestand>5</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>22</Artikel-Nr>
+<Artikelname>Gustaf&apos;s Knäckebröd</Artikelname>
+<Lieferanten-Nr>9</Lieferanten-Nr>
+<Kategorie-Nr>5</Kategorie-Nr>
+<Liefereinheit>24 x 500-g-Packungen</Liefereinheit>
+<Einzelpreis>21</Einzelpreis>
+<Lagerbestand>104</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>25</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>23</Artikel-Nr>
+<Artikelname>Tunnbröd</Artikelname>
+<Lieferanten-Nr>9</Lieferanten-Nr>
+<Kategorie-Nr>5</Kategorie-Nr>
+<Liefereinheit>12 x 250-g-Packungen</Liefereinheit>
+<Einzelpreis>9</Einzelpreis>
+<Lagerbestand>61</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>25</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>24</Artikel-Nr>
+<Artikelname>Guaraná Fantástica</Artikelname>
+<Lieferanten-Nr>10</Lieferanten-Nr>
+<Kategorie-Nr>1</Kategorie-Nr>
+<Liefereinheit>12 x 355-ml-Dosen</Liefereinheit>
+<Einzelpreis>4.5</Einzelpreis>
+<Lagerbestand>20</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>1</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>25</Artikel-Nr>
+<Artikelname>NuNuCa Nuß-Nougat-Creme</Artikelname>
+<Lieferanten-Nr>11</Lieferanten-Nr>
+<Kategorie-Nr>3</Kategorie-Nr>
+<Liefereinheit>20 x 450-g-Gläser</Liefereinheit>
+<Einzelpreis>14</Einzelpreis>
+<Lagerbestand>76</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>30</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>26</Artikel-Nr>
+<Artikelname>Gumbär Gummibärchen</Artikelname>
+<Lieferanten-Nr>11</Lieferanten-Nr>
+<Kategorie-Nr>3</Kategorie-Nr>
+<Liefereinheit>100 x 250-g-Beutel</Liefereinheit>
+<Einzelpreis>31.23</Einzelpreis>
+<Lagerbestand>15</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>27</Artikel-Nr>
+<Artikelname>Schoggi Schokolade</Artikelname>
+<Lieferanten-Nr>11</Lieferanten-Nr>
+<Kategorie-Nr>3</Kategorie-Nr>
+<Liefereinheit>100 x 100-g-Stück</Liefereinheit>
+<Einzelpreis>43.9</Einzelpreis>
+<Lagerbestand>49</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>30</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>28</Artikel-Nr>
+<Artikelname>Rössle Sauerkraut</Artikelname>
+<Lieferanten-Nr>12</Lieferanten-Nr>
+<Kategorie-Nr>7</Kategorie-Nr>
+<Liefereinheit>25 x 825-g-Dosen</Liefereinheit>
+<Einzelpreis>45.6</Einzelpreis>
+<Lagerbestand>26</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>1</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>29</Artikel-Nr>
+<Artikelname>Thüringer Rostbratwurst</Artikelname>
+<Lieferanten-Nr>12</Lieferanten-Nr>
+<Kategorie-Nr>6</Kategorie-Nr>
+<Liefereinheit>50 Beutel x 30 Würstchen</Liefereinheit>
+<Einzelpreis>123.79</Einzelpreis>
+<Lagerbestand>0</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>1</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>30</Artikel-Nr>
+<Artikelname>Nord-Ost Matjeshering</Artikelname>
+<Lieferanten-Nr>13</Lieferanten-Nr>
+<Kategorie-Nr>8</Kategorie-Nr>
+<Liefereinheit>10 x 200-g-Gläser</Liefereinheit>
+<Einzelpreis>25.89</Einzelpreis>
+<Lagerbestand>10</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>15</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>31</Artikel-Nr>
+<Artikelname>Gorgonzola Telino</Artikelname>
+<Lieferanten-Nr>14</Lieferanten-Nr>
+<Kategorie-Nr>4</Kategorie-Nr>
+<Liefereinheit>12 x 100-g-Packungen</Liefereinheit>
+<Einzelpreis>12.5</Einzelpreis>
+<Lagerbestand>0</Lagerbestand>
+<BestellteEinheiten>70</BestellteEinheiten>
+<Mindestbestand>20</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>32</Artikel-Nr>
+<Artikelname>Mascarpone Fabioli</Artikelname>
+<Lieferanten-Nr>14</Lieferanten-Nr>
+<Kategorie-Nr>4</Kategorie-Nr>
+<Liefereinheit>24 x 200-g-Packungen</Liefereinheit>
+<Einzelpreis>32</Einzelpreis>
+<Lagerbestand>9</Lagerbestand>
+<BestellteEinheiten>40</BestellteEinheiten>
+<Mindestbestand>25</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>33</Artikel-Nr>
+<Artikelname>Geitost</Artikelname>
+<Lieferanten-Nr>15</Lieferanten-Nr>
+<Kategorie-Nr>4</Kategorie-Nr>
+<Liefereinheit>500-g-Packung</Liefereinheit>
+<Einzelpreis>2.5</Einzelpreis>
+<Lagerbestand>112</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>20</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>34</Artikel-Nr>
+<Artikelname>Sasquatch Ale</Artikelname>
+<Lieferanten-Nr>16</Lieferanten-Nr>
+<Kategorie-Nr>1</Kategorie-Nr>
+<Liefereinheit>24 x 12-oz-Flaschen</Liefereinheit>
+<Einzelpreis>14</Einzelpreis>
+<Lagerbestand>111</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>15</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>35</Artikel-Nr>
+<Artikelname>Steeleye Stout</Artikelname>
+<Lieferanten-Nr>16</Lieferanten-Nr>
+<Kategorie-Nr>1</Kategorie-Nr>
+<Liefereinheit>24 x 12-oz-Flaschen</Liefereinheit>
+<Einzelpreis>18</Einzelpreis>
+<Lagerbestand>20</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>15</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>36</Artikel-Nr>
+<Artikelname>Inlagd Sill</Artikelname>
+<Lieferanten-Nr>17</Lieferanten-Nr>
+<Kategorie-Nr>8</Kategorie-Nr>
+<Liefereinheit>24 x 250-g -Gläser</Liefereinheit>
+<Einzelpreis>19</Einzelpreis>
+<Lagerbestand>112</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>20</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>37</Artikel-Nr>
+<Artikelname>Gravad lax</Artikelname>
+<Lieferanten-Nr>17</Lieferanten-Nr>
+<Kategorie-Nr>8</Kategorie-Nr>
+<Liefereinheit>12 x 500-g-Packungen</Liefereinheit>
+<Einzelpreis>26</Einzelpreis>
+<Lagerbestand>11</Lagerbestand>
+<BestellteEinheiten>50</BestellteEinheiten>
+<Mindestbestand>25</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>38</Artikel-Nr>
+<Artikelname>Côte de Blaye</Artikelname>
+<Lieferanten-Nr>18</Lieferanten-Nr>
+<Kategorie-Nr>1</Kategorie-Nr>
+<Liefereinheit>12 x 75-cl-Flaschen</Liefereinheit>
+<Einzelpreis>263.5</Einzelpreis>
+<Lagerbestand>17</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>15</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>39</Artikel-Nr>
+<Artikelname>Chartreuse verte</Artikelname>
+<Lieferanten-Nr>18</Lieferanten-Nr>
+<Kategorie-Nr>1</Kategorie-Nr>
+<Liefereinheit>750-ml-Flasche</Liefereinheit>
+<Einzelpreis>18</Einzelpreis>
+<Lagerbestand>69</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>5</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>40</Artikel-Nr>
+<Artikelname>Boston Crab Meat</Artikelname>
+<Lieferanten-Nr>19</Lieferanten-Nr>
+<Kategorie-Nr>8</Kategorie-Nr>
+<Liefereinheit>24 x 4-oz-Dosen</Liefereinheit>
+<Einzelpreis>18.4</Einzelpreis>
+<Lagerbestand>123</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>30</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>41</Artikel-Nr>
+<Artikelname>Jack&apos;s New England Clam Chowder</Artikelname>
+<Lieferanten-Nr>19</Lieferanten-Nr>
+<Kategorie-Nr>8</Kategorie-Nr>
+<Liefereinheit>12 x 12-oz-Dosen</Liefereinheit>
+<Einzelpreis>9.65</Einzelpreis>
+<Lagerbestand>85</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>10</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>42</Artikel-Nr>
+<Artikelname>Singaporean Hokkien Fried Mee</Artikelname>
+<Lieferanten-Nr>20</Lieferanten-Nr>
+<Kategorie-Nr>5</Kategorie-Nr>
+<Liefereinheit>32 x 1-kg-Packungen</Liefereinheit>
+<Einzelpreis>14</Einzelpreis>
+<Lagerbestand>26</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>1</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>43</Artikel-Nr>
+<Artikelname>Ipoh Coffee</Artikelname>
+<Lieferanten-Nr>20</Lieferanten-Nr>
+<Kategorie-Nr>1</Kategorie-Nr>
+<Liefereinheit>16 x 500-g-Dosen</Liefereinheit>
+<Einzelpreis>46</Einzelpreis>
+<Lagerbestand>17</Lagerbestand>
+<BestellteEinheiten>10</BestellteEinheiten>
+<Mindestbestand>25</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>44</Artikel-Nr>
+<Artikelname>Gula Malacca</Artikelname>
+<Lieferanten-Nr>20</Lieferanten-Nr>
+<Kategorie-Nr>2</Kategorie-Nr>
+<Liefereinheit>20 x 2-kg-Beutel</Liefereinheit>
+<Einzelpreis>19.45</Einzelpreis>
+<Lagerbestand>27</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>15</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>45</Artikel-Nr>
+<Artikelname>Røgede sild</Artikelname>
+<Lieferanten-Nr>21</Lieferanten-Nr>
+<Kategorie-Nr>8</Kategorie-Nr>
+<Liefereinheit>1-kg-Paket</Liefereinheit>
+<Einzelpreis>9.5</Einzelpreis>
+<Lagerbestand>5</Lagerbestand>
+<BestellteEinheiten>70</BestellteEinheiten>
+<Mindestbestand>15</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>46</Artikel-Nr>
+<Artikelname>Spegesild</Artikelname>
+<Lieferanten-Nr>21</Lieferanten-Nr>
+<Kategorie-Nr>8</Kategorie-Nr>
+<Liefereinheit>4 x 450-g-Gläser</Liefereinheit>
+<Einzelpreis>12</Einzelpreis>
+<Lagerbestand>95</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>47</Artikel-Nr>
+<Artikelname>Zaanse koeken</Artikelname>
+<Lieferanten-Nr>22</Lieferanten-Nr>
+<Kategorie-Nr>3</Kategorie-Nr>
+<Liefereinheit>10 x 4-oz-Kartons</Liefereinheit>
+<Einzelpreis>9.5</Einzelpreis>
+<Lagerbestand>36</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>48</Artikel-Nr>
+<Artikelname>Chocolade</Artikelname>
+<Lieferanten-Nr>22</Lieferanten-Nr>
+<Kategorie-Nr>3</Kategorie-Nr>
+<Liefereinheit>10 Packungen</Liefereinheit>
+<Einzelpreis>12.75</Einzelpreis>
+<Lagerbestand>15</Lagerbestand>
+<BestellteEinheiten>70</BestellteEinheiten>
+<Mindestbestand>25</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>49</Artikel-Nr>
+<Artikelname>Maxilaku</Artikelname>
+<Lieferanten-Nr>23</Lieferanten-Nr>
+<Kategorie-Nr>3</Kategorie-Nr>
+<Liefereinheit>24 x 50-g-Packungen</Liefereinheit>
+<Einzelpreis>20</Einzelpreis>
+<Lagerbestand>10</Lagerbestand>
+<BestellteEinheiten>60</BestellteEinheiten>
+<Mindestbestand>15</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>50</Artikel-Nr>
+<Artikelname>Valkoinen suklaa</Artikelname>
+<Lieferanten-Nr>23</Lieferanten-Nr>
+<Kategorie-Nr>3</Kategorie-Nr>
+<Liefereinheit>12 x 100-g-Riegel</Liefereinheit>
+<Einzelpreis>16.25</Einzelpreis>
+<Lagerbestand>65</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>30</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>51</Artikel-Nr>
+<Artikelname>Manjimup Dried Apples</Artikelname>
+<Lieferanten-Nr>24</Lieferanten-Nr>
+<Kategorie-Nr>7</Kategorie-Nr>
+<Liefereinheit>50 x 300-g-Packungen</Liefereinheit>
+<Einzelpreis>53</Einzelpreis>
+<Lagerbestand>20</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>10</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>52</Artikel-Nr>
+<Artikelname>Filo Mix</Artikelname>
+<Lieferanten-Nr>24</Lieferanten-Nr>
+<Kategorie-Nr>5</Kategorie-Nr>
+<Liefereinheit>16 x 2-kg-Kartons</Liefereinheit>
+<Einzelpreis>7</Einzelpreis>
+<Lagerbestand>38</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>25</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>53</Artikel-Nr>
+<Artikelname>Perth Pasties</Artikelname>
+<Lieferanten-Nr>24</Lieferanten-Nr>
+<Kategorie-Nr>6</Kategorie-Nr>
+<Liefereinheit>48 Stück</Liefereinheit>
+<Einzelpreis>32.8</Einzelpreis>
+<Lagerbestand>0</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>1</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>54</Artikel-Nr>
+<Artikelname>Tourtière</Artikelname>
+<Lieferanten-Nr>25</Lieferanten-Nr>
+<Kategorie-Nr>6</Kategorie-Nr>
+<Liefereinheit>16 Pasteten</Liefereinheit>
+<Einzelpreis>7.45</Einzelpreis>
+<Lagerbestand>21</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>10</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>55</Artikel-Nr>
+<Artikelname>Pâté chinois</Artikelname>
+<Lieferanten-Nr>25</Lieferanten-Nr>
+<Kategorie-Nr>6</Kategorie-Nr>
+<Liefereinheit>24 Kartons x 2 Pasteten</Liefereinheit>
+<Einzelpreis>24</Einzelpreis>
+<Lagerbestand>115</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>20</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>56</Artikel-Nr>
+<Artikelname>Gnocchi di nonna Alice</Artikelname>
+<Lieferanten-Nr>26</Lieferanten-Nr>
+<Kategorie-Nr>5</Kategorie-Nr>
+<Liefereinheit>24 x 250-g-Packungen</Liefereinheit>
+<Einzelpreis>38</Einzelpreis>
+<Lagerbestand>21</Lagerbestand>
+<BestellteEinheiten>10</BestellteEinheiten>
+<Mindestbestand>30</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>57</Artikel-Nr>
+<Artikelname>Ravioli Angelo</Artikelname>
+<Lieferanten-Nr>26</Lieferanten-Nr>
+<Kategorie-Nr>5</Kategorie-Nr>
+<Liefereinheit>24 x 250-g-Packungen</Liefereinheit>
+<Einzelpreis>19.5</Einzelpreis>
+<Lagerbestand>36</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>20</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>58</Artikel-Nr>
+<Artikelname>Escargots de Bourgogne</Artikelname>
+<Lieferanten-Nr>27</Lieferanten-Nr>
+<Kategorie-Nr>8</Kategorie-Nr>
+<Liefereinheit>24 Stück</Liefereinheit>
+<Einzelpreis>13.25</Einzelpreis>
+<Lagerbestand>62</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>20</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>59</Artikel-Nr>
+<Artikelname>Raclette Courdavault</Artikelname>
+<Lieferanten-Nr>28</Lieferanten-Nr>
+<Kategorie-Nr>4</Kategorie-Nr>
+<Liefereinheit>5-kg-Packung</Liefereinheit>
+<Einzelpreis>55</Einzelpreis>
+<Lagerbestand>79</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>60</Artikel-Nr>
+<Artikelname>Camembert Pierrot</Artikelname>
+<Lieferanten-Nr>28</Lieferanten-Nr>
+<Kategorie-Nr>4</Kategorie-Nr>
+<Liefereinheit>15 x 300-g-Stücke</Liefereinheit>
+<Einzelpreis>34</Einzelpreis>
+<Lagerbestand>19</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>61</Artikel-Nr>
+<Artikelname>Sirop d&apos;érable</Artikelname>
+<Lieferanten-Nr>29</Lieferanten-Nr>
+<Kategorie-Nr>2</Kategorie-Nr>
+<Liefereinheit>24 x 500-ml-Flaschen</Liefereinheit>
+<Einzelpreis>28.5</Einzelpreis>
+<Lagerbestand>113</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>25</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>62</Artikel-Nr>
+<Artikelname>Tarte au sucre</Artikelname>
+<Lieferanten-Nr>29</Lieferanten-Nr>
+<Kategorie-Nr>3</Kategorie-Nr>
+<Liefereinheit>48 Törtchen</Liefereinheit>
+<Einzelpreis>49.3</Einzelpreis>
+<Lagerbestand>17</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>63</Artikel-Nr>
+<Artikelname>Vegie-spread</Artikelname>
+<Lieferanten-Nr>7</Lieferanten-Nr>
+<Kategorie-Nr>2</Kategorie-Nr>
+<Liefereinheit>15 x 625-g-Gläser</Liefereinheit>
+<Einzelpreis>43.9</Einzelpreis>
+<Lagerbestand>24</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>5</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>64</Artikel-Nr>
+<Artikelname>Wimmers gute Semmelknödel</Artikelname>
+<Lieferanten-Nr>12</Lieferanten-Nr>
+<Kategorie-Nr>5</Kategorie-Nr>
+<Liefereinheit>20 Beutel x 4 Stück</Liefereinheit>
+<Einzelpreis>33.25</Einzelpreis>
+<Lagerbestand>22</Lagerbestand>
+<BestellteEinheiten>80</BestellteEinheiten>
+<Mindestbestand>30</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>65</Artikel-Nr>
+<Artikelname>Louisiana Fiery Hot Pepper Sauce</Artikelname>
+<Lieferanten-Nr>2</Lieferanten-Nr>
+<Kategorie-Nr>2</Kategorie-Nr>
+<Liefereinheit>32 x 8-oz-Flaschen</Liefereinheit>
+<Einzelpreis>21.05</Einzelpreis>
+<Lagerbestand>76</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>66</Artikel-Nr>
+<Artikelname>Louisiana Hot Spiced Okra</Artikelname>
+<Lieferanten-Nr>2</Lieferanten-Nr>
+<Kategorie-Nr>2</Kategorie-Nr>
+<Liefereinheit>24 x 8-oz-Gläser</Liefereinheit>
+<Einzelpreis>17</Einzelpreis>
+<Lagerbestand>4</Lagerbestand>
+<BestellteEinheiten>100</BestellteEinheiten>
+<Mindestbestand>20</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>67</Artikel-Nr>
+<Artikelname>Laughing Lumberjack Lager</Artikelname>
+<Lieferanten-Nr>16</Lieferanten-Nr>
+<Kategorie-Nr>1</Kategorie-Nr>
+<Liefereinheit>24 x 12-oz-Flaschen</Liefereinheit>
+<Einzelpreis>14</Einzelpreis>
+<Lagerbestand>52</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>10</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>68</Artikel-Nr>
+<Artikelname>Scottish Longbreads</Artikelname>
+<Lieferanten-Nr>8</Lieferanten-Nr>
+<Kategorie-Nr>3</Kategorie-Nr>
+<Liefereinheit>10 Kartons x 8 Stück</Liefereinheit>
+<Einzelpreis>12.5</Einzelpreis>
+<Lagerbestand>6</Lagerbestand>
+<BestellteEinheiten>10</BestellteEinheiten>
+<Mindestbestand>15</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>69</Artikel-Nr>
+<Artikelname>Gudbrandsdalsost</Artikelname>
+<Lieferanten-Nr>15</Lieferanten-Nr>
+<Kategorie-Nr>4</Kategorie-Nr>
+<Liefereinheit>10-kg-Paket</Liefereinheit>
+<Einzelpreis>36</Einzelpreis>
+<Lagerbestand>26</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>15</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>70</Artikel-Nr>
+<Artikelname>Outback Lager</Artikelname>
+<Lieferanten-Nr>7</Lieferanten-Nr>
+<Kategorie-Nr>1</Kategorie-Nr>
+<Liefereinheit>24 x 355-ml-Flaschen</Liefereinheit>
+<Einzelpreis>15</Einzelpreis>
+<Lagerbestand>15</Lagerbestand>
+<BestellteEinheiten>10</BestellteEinheiten>
+<Mindestbestand>30</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>71</Artikel-Nr>
+<Artikelname>Fløtemysost</Artikelname>
+<Lieferanten-Nr>15</Lieferanten-Nr>
+<Kategorie-Nr>4</Kategorie-Nr>
+<Liefereinheit>10 x 500-g-Packungen</Liefereinheit>
+<Einzelpreis>21.5</Einzelpreis>
+<Lagerbestand>26</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>72</Artikel-Nr>
+<Artikelname>Mozzarella di Giovanni</Artikelname>
+<Lieferanten-Nr>14</Lieferanten-Nr>
+<Kategorie-Nr>4</Kategorie-Nr>
+<Liefereinheit>24 x 200 g-Packungen</Liefereinheit>
+<Einzelpreis>34.8</Einzelpreis>
+<Lagerbestand>14</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>0</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>73</Artikel-Nr>
+<Artikelname>Röd Kaviar</Artikelname>
+<Lieferanten-Nr>17</Lieferanten-Nr>
+<Kategorie-Nr>8</Kategorie-Nr>
+<Liefereinheit>24 x 150-g-Gläser</Liefereinheit>
+<Einzelpreis>15</Einzelpreis>
+<Lagerbestand>101</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>5</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>74</Artikel-Nr>
+<Artikelname>Longlife Tofu</Artikelname>
+<Lieferanten-Nr>4</Lieferanten-Nr>
+<Kategorie-Nr>7</Kategorie-Nr>
+<Liefereinheit>5-kg-Paket</Liefereinheit>
+<Einzelpreis>10</Einzelpreis>
+<Lagerbestand>4</Lagerbestand>
+<BestellteEinheiten>20</BestellteEinheiten>
+<Mindestbestand>5</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>75</Artikel-Nr>
+<Artikelname>Rhönbräu Klosterbier</Artikelname>
+<Lieferanten-Nr>12</Lieferanten-Nr>
+<Kategorie-Nr>1</Kategorie-Nr>
+<Liefereinheit>24 x 0,5-l-Flaschen</Liefereinheit>
+<Einzelpreis>7.75</Einzelpreis>
+<Lagerbestand>125</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>25</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>76</Artikel-Nr>
+<Artikelname>Lakkalikööri</Artikelname>
+<Lieferanten-Nr>23</Lieferanten-Nr>
+<Kategorie-Nr>1</Kategorie-Nr>
+<Liefereinheit>500-ml-Flasche</Liefereinheit>
+<Einzelpreis>18</Einzelpreis>
+<Lagerbestand>57</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>20</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+<Artikel>
+<Artikel-Nr>77</Artikel-Nr>
+<Artikelname>Original Frankfurter grüne Soße</Artikelname>
+<Lieferanten-Nr>12</Lieferanten-Nr>
+<Kategorie-Nr>2</Kategorie-Nr>
+<Liefereinheit>12 Kartons</Liefereinheit>
+<Einzelpreis>13</Einzelpreis>
+<Lagerbestand>32</Lagerbestand>
+<BestellteEinheiten>0</BestellteEinheiten>
+<Mindestbestand>15</Mindestbestand>
+<Auslaufartikel>0</Auslaufartikel>
+</Artikel>
+</db>

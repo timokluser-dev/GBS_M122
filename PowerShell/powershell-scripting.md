@@ -2,8 +2,18 @@
 
 ## Quick Access
 
+_Exam II_:
+
 :arrow_right: [Writing PS OneLiners](#writing-ps-oneliners)  
-:arrow_right: [Command Master Table](#command-master-table)
+:arrow_right: [Command Master Table](#command-master-table)  
+
+---  
+
+_Exam III_:
+
+:arrow_right: [Code Snippets](#code-snippets)  
+:arrow_right: [Script Development](#script-development)  
+:arrow_right: [Script Template](#script-template)  
 
 ---
 <br>
@@ -166,9 +176,6 @@ PowerShell supports the following logical operators.
 | `!`      | Same as `-not`                     | `!(1 -eq 1)`               |
 |          |                                    | `False`                    |
 
-**Case-Sentitive:** Prefix `-c` (e.g. `$_.ProcessName -cmatch "^W"`)  
-**Case-Insensitive:** Prefix `-i` (e.g. `$_.ProcessName -imatch "^W"`)  
-
 Source: https://github.com/MicrosoftDocs/PowerShell-Docs/blob/staging/reference/7.1/Microsoft.PowerShell.Core/About/about_Logical_Operators.md?plain=1#L28
 
 ## Comparison Operators
@@ -195,6 +202,9 @@ specified patterns. PowerShell includes the following comparison operators:
 |             | `-notin`       | value is not in a collection              |
 | Type        | `-is`          | both objects are the same type            |
 |             | `-isnot`       | the objects are not the same type         |
+
+**Case-Sentitive:** Prefix `-c` (e.g. `$_.ProcessName -cmatch "^W"`)  
+**Case-Insensitive:** Prefix `-i` (e.g. `$_.ProcessName -imatch "^W"`)  
 
 Source: https://github.com/MicrosoftDocs/PowerShell-Docs/blob/staging/reference/7.1/Microsoft.PowerShell.Core/About/about_Comparison_Operators.md?plain=1#L18
 
@@ -807,6 +817,34 @@ Test-Function 1 -Text "hello world" -Force
 Test-Function 2 -Text "hello world" -Actions @("shutdown", "restart") -Force
 ```
 
+### Pipeline Params
+
+Only single object can be passed as pipeline.
+
+```powershell
+# Get-ChildItem -Path ./README.md | Test-PipelineObject
+# Output: `README.md_staff`
+function Test-PipelineObject {
+    param(
+        [Parameter(Mandatory=$true, ValueFromPipeline)]
+        $Object
+    )
+
+    Write-Host "$($Object.Name)_$($Object.Group)"
+}
+
+# Get-ChildItem -Path ./README.md | Test-PipelineSingleProperty
+# Output: `170`
+function Test-PipelineSingleProperty {
+    param(
+        [Parameter(Mandatory=$true, ValueFromPipelineByPropertyName)]
+        $Size
+    )
+    
+    Write-Host $Size
+}
+```
+
 ## Script Parameters
 
 On the top of the script:
@@ -873,9 +911,61 @@ Register-ScheduledTask -TaskName 'My PowerShell Script' -TaskPath "PS_TEST" -Inp
 
 :arrow_right: using block comments
 
-:arrow_right: in VSCode type `##` - (below function header or on top of script)
+:arrow_right: in VSCode type `##` - (**below** function header & inside of function)
 
-## Testing
+:arrow_right: in VSCode type `comment-help` (on top of script)
+
+
+```powershell
+<#
+.SYNOPSIS
+    Get PC Data
+.DESCRIPTION
+    Get informations about your PC:
+    - username
+    - disk size
+    - network interfaces
+.EXAMPLE
+    PS C:\> ./pc-data.ps1
+    Will run the script
+.INPUTS
+    None
+.OUTPUTS
+    None
+.NOTES
+    An interactive CLI
+.LINK
+    Get-PSDrive
+    Get-NetIPAddress
+#>
+
+function Test-Function {
+    <#
+    .SYNOPSIS
+    Short description
+    
+    .DESCRIPTION
+    Long description
+    
+    .PARAMETER ComputerName
+    Parameter description
+    
+    .EXAMPLE
+    An example
+    
+    .NOTES
+    General notes
+    #>
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$ComputerName
+    )
+    
+    Write-Host $ComputerName
+}
+```
+
+## Testing
   
 - `White-Box Test`: Debugger, line by line
 - `Black-Box Test`: Unit Tests (asserts)
@@ -886,45 +976,22 @@ Register-ScheduledTask -TaskName 'My PowerShell Script' -TaskPath "PS_TEST" -Inp
 
 ## Code Snippets
 
-### 1. Menu
+### 1\. Menu
 
 ```powershell
-# Skript PCDatenAnzeigen.ps1
+{"gitdown": "include", "file": "./scripts/pc-data.ps1"}
+```
 
-Write-Host '*** Willkommen beim Anzeigen von Informationen ***'
+### 2\. Event Logs
 
-Do {
-    Write-Host "`n[1] Aktueller Benutzername"
-    Write-Host '[2] Grösse der Festplatte in GByte mit belegtem und freiem Platz'
-    Write-Host '[3] Daten der Netzwerkkarten mit IP-Adresse'
-    Write-Host '[0] Menü verlassen'
-    $auswahl = Read-Host
+```powershell
+{"gitdown": "include", "file": "./scripts/event-log.ps1"}
+```
 
-    switch ($auswahl) {
-        0 {
-            Write-Host 'Das Programm wird beendet.'
-        }
-        1 {
-            Write-Host "Der Benutzername lautet '$env:username'."
-        }
-        2 {
-            $disk = Get-PSDrive C
-            # kein Abstand zwischen 1 und gb: 
-            $frei = $disk.free / 1gb
-            $belegt = $disk.Used / 1gb
-            # Alternative: $belegt = Get-PSDrive -Name C | ForEach-Object -Process { ($_.Used / 1gb) }
-            $groesse = $belegt + $frei
-            Write-Host "Die Festplatte 'C:\' ist $groesse GBytes gross, hat $belegt GBytes belegt und $frei GBytes freien Platz."
-        }
-        3 {
-            Get-NetIPAddress | Format-Table
-            
-        }
-        Default {
-            Write-Host 'Geben Sie einen zulässigen Wert ein.'
-        }
-    }
-} while ($auswahl -ne 0)
+### 3\. XML DB
+
+```powershell
+{"gitdown": "include", "file": "./scripts/xml-db.ps1"}
 ```
 
 # Script Template
