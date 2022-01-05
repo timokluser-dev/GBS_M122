@@ -5,3 +5,8 @@
    Run and Debug → Add Configuration... → PowerShell: Launch Current File
 3. Set Breakpoints & Conditional Breakpoints
 4. Run File: <kbd>F5</kbd>
+
+<br>
+
+- https://code.visualstudio.com/docs/languages/powershell
+- https://code.visualstudio.com/docs/editor/debugging
